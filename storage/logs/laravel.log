@@ -163,3 +163,404 @@
 #23 C:/xampp/htdocs/PlumbNepal/artisan(12): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
 #24 {main}
 "} 
+[2026-05-28 18:59:20] testing.ERROR: AI Pipeline failed {"pipeline_id":1,"error":"Service unreachable"} 
+[2026-05-28 18:59:20] testing.INFO: Matching plumbers for booking 6: 0 found  
+[2026-05-28 18:59:20] testing.INFO: No matching plumbers found for booking 6  
+[2026-05-28 18:59:20] testing.INFO: Booking details - lat: 27.7172, lng: 85.324, service_type_id: 6  
+[2026-05-28 18:59:21] testing.INFO: AI Pipeline started {"pipeline_id":2,"user_id":13} 
+[2026-05-28 18:59:24] testing.WARNING: AI Agent Failed {"agent":"PlumbingDiagnoser","provider":"gemini","model":"gemini-2.5-flash","error":"HTTP request returned status code 403:
+{
+  \"error\": {
+    \"code\": 403,
+    \"message\": \"Method doesn't allow unregistered callers (callers without established i (truncated...)
+"} 
+[2026-05-28 18:59:44] testing.INFO: AI Agent Success {"agent":"PlumbingDiagnoser","provider":"ollama","model":"qwen2.5-coder:1.5b"} 
+[2026-05-28 18:59:44] testing.INFO: Diagnosis Step Output {"diagnosis":{"summary":"I am sorry but I cannot provide an accurate price for fixing a leak in the sink without more information. The user description is too general and does not specify the type of pipe or any other details that would help me estimate the cost accurately. Additionally, there may be safety concerns related to gas or electrical leaks, which require urgent professional inspection.","provider":"ollama","model":"qwen2.5-coder:1.5b"}} 
+[2026-05-28 18:59:44] testing.INFO: Matching plumbers for booking 7: 0 found  
+[2026-05-28 18:59:44] testing.INFO: No matching plumbers found for booking 7  
+[2026-05-28 18:59:44] testing.INFO: Booking details - lat: 27.7172, lng: 85.324, service_type_id: 8  
+[2026-05-28 18:59:44] testing.INFO: Broadcasting auth request {"user_id":16,"role":"plumber","channel_name":"private-plumbers.3","socket_id":"1234.5678"} 
+[2026-05-28 18:59:45] testing.INFO: CHANNEL AUTH {"user_id":16,"role":"plumber","relationship_profile_id":3,"requested_channel":"3"} 
+[2026-05-28 18:59:45] testing.INFO: Broadcasting auth request {"user_id":17,"role":"plumber","channel_name":"private-plumbers.4","socket_id":"1234.5678"} 
+[2026-05-28 18:59:45] testing.INFO: CHANNEL AUTH {"user_id":17,"role":"plumber","relationship_profile_id":4,"requested_channel":"4"} 
+[2026-05-28 18:59:45] testing.INFO: Broadcasting auth request {"user_id":18,"role":"customer","channel_name":"private-user.18","socket_id":"1234.5678"} 
+[2026-05-28 18:59:45] testing.INFO: Diagnosis Step Output {"diagnosis":{"issue_type":"pipe_leak","confidence":0.9}} 
+[2026-05-28 20:28:36] testing.ERROR: AI Pipeline failed {"pipeline_id":1,"error":"Service unreachable"} 
+[2026-05-28 20:28:36] testing.INFO: Matching plumbers for booking 6: 0 found  
+[2026-05-28 20:28:36] testing.INFO: No matching plumbers found for booking 6  
+[2026-05-28 20:28:36] testing.INFO: Booking details - lat: 27.7172, lng: 85.324, service_type_id: 6  
+[2026-05-28 20:28:37] testing.INFO: AI Pipeline started {"pipeline_id":2,"user_id":13} 
+[2026-05-28 20:28:38] testing.WARNING: AI Agent Failed {"agent":"PlumbingDiagnoser","provider":"gemini","model":"gemini-2.5-flash","error":"HTTP request returned status code 403:
+{
+  \"error\": {
+    \"code\": 403,
+    \"message\": \"Method doesn't allow unregistered callers (callers without established i (truncated...)
+"} 
+[2026-05-28 20:28:54] testing.INFO: AI Agent Success {"agent":"PlumbingDiagnoser","provider":"ollama","model":"qwen2.5-coder:1.5b"} 
+[2026-05-28 20:28:54] testing.INFO: Diagnosis Step Output {"diagnosis":{"confidence":0.8,"summary":"We need to estimate the cost of fixing a pipe leak under your sink in Nepal. Please provide more details such as the specific location and extent of the leak.","provider":"ollama","model":"qwen2.5-coder:1.5b"}} 
+[2026-05-28 20:28:55] testing.INFO: Matching plumbers for booking 7: 0 found  
+[2026-05-28 20:28:55] testing.INFO: No matching plumbers found for booking 7  
+[2026-05-28 20:28:55] testing.INFO: Booking details - lat: 27.7172, lng: 85.324, service_type_id: 8  
+[2026-05-28 20:28:55] testing.INFO: Broadcasting auth request {"user_id":16,"role":"plumber","channel_name":"private-plumbers.3","socket_id":"1234.5678"} 
+[2026-05-28 20:28:55] testing.INFO: CHANNEL AUTH {"user_id":16,"role":"plumber","relationship_profile_id":3,"requested_channel":"3"} 
+[2026-05-28 20:28:55] testing.INFO: Broadcasting auth request {"user_id":17,"role":"plumber","channel_name":"private-plumbers.4","socket_id":"1234.5678"} 
+[2026-05-28 20:28:55] testing.INFO: CHANNEL AUTH {"user_id":17,"role":"plumber","relationship_profile_id":4,"requested_channel":"4"} 
+[2026-05-28 20:28:55] testing.INFO: Broadcasting auth request {"user_id":18,"role":"customer","channel_name":"private-user.18","socket_id":"1234.5678"} 
+[2026-05-28 20:28:56] testing.INFO: Diagnosis Step Output {"diagnosis":{"issue_type":"pipe_leak","confidence":0.9}} 
+[2026-05-28 20:33:01] testing.ERROR: AI Pipeline failed {"pipeline_id":1,"error":"Service unreachable"} 
+[2026-05-28 20:33:01] testing.INFO: Matching plumbers for booking 6: 0 found  
+[2026-05-28 20:33:01] testing.INFO: No matching plumbers found for booking 6  
+[2026-05-28 20:33:01] testing.INFO: Booking details - lat: 27.7172, lng: 85.324, service_type_id: 6  
+[2026-05-28 20:33:02] testing.INFO: AI Pipeline started {"pipeline_id":2,"user_id":13} 
+[2026-05-28 20:33:02] testing.WARNING: AI Agent Failed {"agent":"PlumbingDiagnoser","provider":"gemini","model":"gemini-2.5-flash","error":"HTTP request returned status code 403:
+{
+  \"error\": {
+    \"code\": 403,
+    \"message\": \"Method doesn't allow unregistered callers (callers without established i (truncated...)
+"} 
+[2026-05-28 20:33:08] testing.INFO: AI Agent Success {"agent":"PlumbingDiagnoser","provider":"ollama","model":"qwen2.5-coder:1.5b"} 
+[2026-05-28 20:33:08] testing.INFO: Diagnosis Step Output {"diagnosis":{"confidence":0.0,"summary":"The user has provided a brief description of a plumbing issue without enough detail to give accurate pricing. Lower the confidence and ask for more information in the summary.","provider":"ollama","model":"qwen2.5-coder:1.5b"}} 
+[2026-05-28 20:33:08] testing.INFO: Matching plumbers for booking 7: 0 found  
+[2026-05-28 20:33:08] testing.INFO: No matching plumbers found for booking 7  
+[2026-05-28 20:33:08] testing.INFO: Booking details - lat: 27.7172, lng: 85.324, service_type_id: 8  
+[2026-05-28 20:33:08] testing.INFO: Broadcasting auth request {"user_id":16,"role":"plumber","channel_name":"private-plumbers.3","socket_id":"1234.5678"} 
+[2026-05-28 20:33:08] testing.INFO: CHANNEL AUTH {"user_id":16,"role":"plumber","relationship_profile_id":3,"requested_channel":"3"} 
+[2026-05-28 20:33:08] testing.INFO: Broadcasting auth request {"user_id":17,"role":"plumber","channel_name":"private-plumbers.4","socket_id":"1234.5678"} 
+[2026-05-28 20:33:08] testing.INFO: CHANNEL AUTH {"user_id":17,"role":"plumber","relationship_profile_id":4,"requested_channel":"4"} 
+[2026-05-28 20:33:09] testing.INFO: Broadcasting auth request {"user_id":18,"role":"customer","channel_name":"private-user.18","socket_id":"1234.5678"} 
+[2026-05-28 20:33:09] testing.INFO: Diagnosis Step Output {"diagnosis":{"issue_type":"pipe_leak","confidence":0.9}} 
+[2026-05-28 20:38:16] testing.ERROR: AI Pipeline failed {"pipeline_id":1,"error":"Service unreachable"} 
+[2026-05-28 20:38:17] testing.INFO: Matching plumbers for booking 6: 0 found  
+[2026-05-28 20:38:17] testing.INFO: No matching plumbers found for booking 6  
+[2026-05-28 20:38:17] testing.INFO: Booking details - lat: 27.7172, lng: 85.324, service_type_id: 6  
+[2026-05-28 20:38:17] testing.INFO: AI Pipeline started {"pipeline_id":2,"user_id":13} 
+[2026-05-28 20:38:17] testing.WARNING: AI Agent Failed {"agent":"PlumbingDiagnoser","provider":"gemini","model":"gemini-2.5-flash","error":"HTTP request returned status code 403:
+{
+  \"error\": {
+    \"code\": 403,
+    \"message\": \"Method doesn't allow unregistered callers (callers without established i (truncated...)
+"} 
+[2026-05-28 20:38:27] testing.INFO: AI Agent Success {"agent":"PlumbingDiagnoser","provider":"ollama","model":"qwen2.5-coder:1.5b"} 
+[2026-05-28 20:38:27] testing.INFO: Diagnosis Step Output {"diagnosis":{"provider":"ollama","model":"qwen2.5-coder:1.5b"}} 
+[2026-05-28 20:38:27] testing.INFO: Matching plumbers for booking 7: 0 found  
+[2026-05-28 20:38:27] testing.INFO: No matching plumbers found for booking 7  
+[2026-05-28 20:38:27] testing.INFO: Booking details - lat: 27.7172, lng: 85.324, service_type_id: 8  
+[2026-05-28 20:38:27] testing.INFO: Broadcasting auth request {"user_id":16,"role":"plumber","channel_name":"private-plumbers.3","socket_id":"1234.5678"} 
+[2026-05-28 20:38:27] testing.INFO: CHANNEL AUTH {"user_id":16,"role":"plumber","relationship_profile_id":3,"requested_channel":"3"} 
+[2026-05-28 20:38:27] testing.INFO: Broadcasting auth request {"user_id":17,"role":"plumber","channel_name":"private-plumbers.4","socket_id":"1234.5678"} 
+[2026-05-28 20:38:27] testing.INFO: CHANNEL AUTH {"user_id":17,"role":"plumber","relationship_profile_id":4,"requested_channel":"4"} 
+[2026-05-28 20:38:27] testing.INFO: Broadcasting auth request {"user_id":18,"role":"customer","channel_name":"private-user.18","socket_id":"1234.5678"} 
+[2026-05-28 20:38:28] testing.INFO: Diagnosis Step Output {"diagnosis":{"issue_type":"pipe_leak","confidence":0.9}} 
+[2026-05-28 20:58:51] testing.ERROR: AI Pipeline failed {"pipeline_id":1,"error":"Service unreachable"} 
+[2026-05-28 20:58:52] testing.INFO: Matching plumbers for booking 6: 0 found  
+[2026-05-28 20:58:52] testing.INFO: No matching plumbers found for booking 6  
+[2026-05-28 20:58:52] testing.INFO: Booking details - lat: 27.7172, lng: 85.324, service_type_id: 6  
+[2026-05-28 20:58:52] testing.INFO: AI Pipeline started {"pipeline_id":2,"user_id":13} 
+[2026-05-28 20:58:52] testing.WARNING: AI Agent Failed {"agent":"PlumbingDiagnoser","provider":"gemini","model":"gemini-2.5-flash","error":"HTTP request returned status code 403:
+{
+  \"error\": {
+    \"code\": 403,
+    \"message\": \"Method doesn't allow unregistered callers (callers without established i (truncated...)
+"} 
+[2026-05-28 20:59:10] testing.INFO: AI Agent Success {"agent":"PlumbingDiagnoser","provider":"ollama","model":"qwen2.5-coder:1.5b"} 
+[2026-05-28 20:59:10] testing.INFO: Diagnosis Step Output {"diagnosis":{"confidence":0.5,"summary":"I am unable to provide an accurate price estimate for this issue based on the limited information provided. Please provide more details such as the location, size of the leak, and any other relevant information so that I can give you a proper estimate in Nepalese Rupees (NPR). ","provider":"ollama","model":"qwen2.5-coder:1.5b"}} 
+[2026-05-28 20:59:10] testing.INFO: Matching plumbers for booking 7: 0 found  
+[2026-05-28 20:59:10] testing.INFO: No matching plumbers found for booking 7  
+[2026-05-28 20:59:10] testing.INFO: Booking details - lat: 27.7172, lng: 85.324, service_type_id: 8  
+[2026-05-28 20:59:10] testing.INFO: Broadcasting auth request {"user_id":17,"role":"plumber","channel_name":"private-plumbers.3","socket_id":"1234.5678"} 
+[2026-05-28 20:59:10] testing.INFO: CHANNEL AUTH {"user_id":17,"role":"plumber","relationship_profile_id":3,"requested_channel":"3"} 
+[2026-05-28 20:59:10] testing.INFO: Broadcasting auth request {"user_id":18,"role":"plumber","channel_name":"private-plumbers.4","socket_id":"1234.5678"} 
+[2026-05-28 20:59:10] testing.INFO: CHANNEL AUTH {"user_id":18,"role":"plumber","relationship_profile_id":4,"requested_channel":"4"} 
+[2026-05-28 20:59:10] testing.INFO: Broadcasting auth request {"user_id":19,"role":"customer","channel_name":"private-user.19","socket_id":"1234.5678"} 
+[2026-05-28 20:59:11] testing.INFO: Diagnosis Step Output {"diagnosis":{"issue_type":"pipe_leak","confidence":0.9}} 
+[2026-05-28 21:00:13] testing.ERROR: AI Pipeline failed {"pipeline_id":1,"error":"Service unreachable"} 
+[2026-05-28 21:00:14] testing.INFO: Matching plumbers for booking 6: 0 found  
+[2026-05-28 21:00:14] testing.INFO: No matching plumbers found for booking 6  
+[2026-05-28 21:00:14] testing.INFO: Booking details - lat: 27.7172, lng: 85.324, service_type_id: 6  
+[2026-05-28 21:00:14] testing.INFO: AI Pipeline started {"pipeline_id":2,"user_id":13} 
+[2026-05-28 21:00:14] testing.WARNING: AI Agent Failed {"agent":"PlumbingDiagnoser","provider":"gemini","model":"gemini-2.5-flash","error":"HTTP request returned status code 403:
+{
+  \"error\": {
+    \"code\": 403,
+    \"message\": \"Method doesn't allow unregistered callers (callers without established i (truncated...)
+"} 
+[2026-05-28 21:00:19] testing.INFO: AI Agent Success {"agent":"PlumbingDiagnoser","provider":"ollama","model":"qwen2.5-coder:1.5b"} 
+[2026-05-28 21:00:19] testing.INFO: Diagnosis Step Output {"diagnosis":{"confidence":0.2,"summary":"Pipe leaking at the sink area in your home requires immediate attention due to potential risks of water damage and health issues.","provider":"ollama","model":"qwen2.5-coder:1.5b"}} 
+[2026-05-28 21:00:20] testing.INFO: Matching plumbers for booking 7: 0 found  
+[2026-05-28 21:00:20] testing.INFO: No matching plumbers found for booking 7  
+[2026-05-28 21:00:20] testing.INFO: Booking details - lat: 27.7172, lng: 85.324, service_type_id: 8  
+[2026-05-28 21:00:20] testing.INFO: Broadcasting auth request {"user_id":17,"role":"plumber","channel_name":"private-plumbers.3","socket_id":"1234.5678"} 
+[2026-05-28 21:00:20] testing.INFO: CHANNEL AUTH {"user_id":17,"role":"plumber","relationship_profile_id":3,"requested_channel":"3"} 
+[2026-05-28 21:00:20] testing.INFO: Broadcasting auth request {"user_id":18,"role":"plumber","channel_name":"private-plumbers.4","socket_id":"1234.5678"} 
+[2026-05-28 21:00:20] testing.INFO: CHANNEL AUTH {"user_id":18,"role":"plumber","relationship_profile_id":4,"requested_channel":"4"} 
+[2026-05-28 21:00:20] testing.INFO: Broadcasting auth request {"user_id":19,"role":"customer","channel_name":"private-user.19","socket_id":"1234.5678"} 
+[2026-05-28 21:00:20] testing.INFO: Diagnosis Step Output {"diagnosis":{"issue_type":"pipe_leak","confidence":0.9}} 
+[2026-05-28 22:20:17] testing.ERROR: AI Pipeline failed {"pipeline_id":1,"error":"Service unreachable"} 
+[2026-05-28 22:20:17] testing.INFO: Matching plumbers for booking 6: 0 found  
+[2026-05-28 22:20:17] testing.INFO: No matching plumbers found for booking 6  
+[2026-05-28 22:20:17] testing.INFO: Booking details - lat: 27.7172, lng: 85.324, service_type_id: 6  
+[2026-05-28 22:20:18] testing.INFO: AI Pipeline started {"pipeline_id":2,"user_id":13} 
+[2026-05-28 22:20:20] testing.WARNING: AI Agent Failed {"agent":"PlumbingDiagnoser","provider":"gemini","model":"gemini-2.5-flash","error":"HTTP request returned status code 403:
+{
+  \"error\": {
+    \"code\": 403,
+    \"message\": \"Method doesn't allow unregistered callers (callers without established i (truncated...)
+"} 
+[2026-05-28 22:20:37] testing.INFO: AI Agent Success {"agent":"PlumbingDiagnoser","provider":"ollama","model":"qwen2.5-coder:1.5b"} 
+[2026-05-28 22:20:37] testing.INFO: Diagnosis Step Output {"diagnosis":{"confidence":1.0,"summary":"For a leak under the sink in PlumbNepal, the estimated cost is approximately **2,500 NPR** (including materials and labor). Please note that this estimate may vary based on your location and specific needs.","provider":"ollama","model":"qwen2.5-coder:1.5b"}} 
+[2026-05-28 22:20:38] testing.INFO: Matching plumbers for booking 7: 0 found  
+[2026-05-28 22:20:38] testing.INFO: No matching plumbers found for booking 7  
+[2026-05-28 22:20:38] testing.INFO: Booking details - lat: 27.7172, lng: 85.324, service_type_id: 8  
+[2026-05-28 22:20:38] testing.INFO: Broadcasting auth request {"user_id":17,"role":"plumber","channel_name":"private-plumbers.3","socket_id":"1234.5678"} 
+[2026-05-28 22:20:38] testing.INFO: CHANNEL AUTH {"user_id":17,"role":"plumber","relationship_profile_id":3,"requested_channel":"3"} 
+[2026-05-28 22:20:38] testing.INFO: Broadcasting auth request {"user_id":18,"role":"plumber","channel_name":"private-plumbers.4","socket_id":"1234.5678"} 
+[2026-05-28 22:20:38] testing.INFO: CHANNEL AUTH {"user_id":18,"role":"plumber","relationship_profile_id":4,"requested_channel":"4"} 
+[2026-05-28 22:20:38] testing.INFO: Broadcasting auth request {"user_id":19,"role":"customer","channel_name":"private-user.19","socket_id":"1234.5678"} 
+[2026-05-28 22:20:39] testing.INFO: Diagnosis Step Output {"diagnosis":{"issue_type":"pipe_leak","confidence":0.9}} 
+[2026-05-28 22:40:21] testing.WARNING: AI Agent Failed {"agent":"PlumbingDiagnoser","provider":"gemini","model":"gemini-2.5-flash","error":"HTTP request returned status code 403:
+{
+  \"error\": {
+    \"code\": 403,
+    \"message\": \"Method doesn't allow unregistered callers (callers without established i (truncated...)
+"} 
+[2026-05-28 22:40:38] testing.INFO: AI Agent Success {"agent":"PlumbingDiagnoser","provider":"ollama","model":"qwen2.5-coder:1.5b"} 
+[2026-05-28 22:40:38] testing.INFO: Diagnosis Step Output {"diagnosis":{"confidence":0.3,"summary":"Based on the description provided, it is unclear what specific issue with the pipe is causing leaks under the sink. To provide accurate pricing and ensure safety, I would need additional information about where the leak occurs, how serious the situation is, and any potential causes or symptoms associated with the pipe malfunction.","provider":"ollama","model":"qwen2.5-coder:1.5b"}} 
+[2026-05-28 22:40:38] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"RunDiagnosisStep"} 
+[2026-05-28 22:40:38] testing.INFO: broadcastOn executed {"pipelineId":1} 
+[2026-05-28 22:41:06] testing.ERROR: AI Pipeline failed {"pipeline_id":1,"error":"Service unreachable"} 
+[2026-05-28 22:41:07] testing.INFO: Matching plumbers for booking 6: 0 found  
+[2026-05-28 22:41:07] testing.INFO: No matching plumbers found for booking 6  
+[2026-05-28 22:41:07] testing.INFO: Booking details - lat: 27.7172, lng: 85.324, service_type_id: 6  
+[2026-05-28 22:41:07] testing.INFO: AI Pipeline started {"pipeline_id":2,"user_id":13} 
+[2026-05-28 22:41:08] testing.WARNING: AI Agent Failed {"agent":"PlumbingDiagnoser","provider":"gemini","model":"gemini-2.5-flash","error":"HTTP request returned status code 403:
+{
+  \"error\": {
+    \"code\": 403,
+    \"message\": \"Method doesn't allow unregistered callers (callers without established i (truncated...)
+"} 
+[2026-05-28 22:41:11] testing.INFO: AI Agent Success {"agent":"PlumbingDiagnoser","provider":"ollama","model":"qwen2.5-coder:1.5b"} 
+[2026-05-28 22:41:11] testing.INFO: Diagnosis Step Output {"diagnosis":{"provider":"ollama","model":"qwen2.5-coder:1.5b"}} 
+[2026-05-28 22:41:11] testing.INFO: StepCompletedEvent fired {"pipelineId":3,"stepName":"RunDiagnosisStep"} 
+[2026-05-28 22:41:11] testing.INFO: broadcastOn executed {"pipelineId":3} 
+[2026-05-28 22:41:13] testing.INFO: Matching plumbers for booking 7: 0 found  
+[2026-05-28 22:41:13] testing.INFO: No matching plumbers found for booking 7  
+[2026-05-28 22:41:13] testing.INFO: Booking details - lat: 27.7172, lng: 85.324, service_type_id: 8  
+[2026-05-28 22:41:13] testing.INFO: Broadcasting auth request {"user_id":17,"role":"plumber","channel_name":"private-plumbers.3","socket_id":"1234.5678"} 
+[2026-05-28 22:41:13] testing.INFO: CHANNEL AUTH {"user_id":17,"role":"plumber","relationship_profile_id":3,"requested_channel":"3"} 
+[2026-05-28 22:41:13] testing.INFO: Broadcasting auth request {"user_id":18,"role":"plumber","channel_name":"private-plumbers.4","socket_id":"1234.5678"} 
+[2026-05-28 22:41:13] testing.INFO: CHANNEL AUTH {"user_id":18,"role":"plumber","relationship_profile_id":4,"requested_channel":"4"} 
+[2026-05-28 22:41:14] testing.INFO: Broadcasting auth request {"user_id":19,"role":"customer","channel_name":"private-user.19","socket_id":"1234.5678"} 
+[2026-05-28 22:41:14] testing.INFO: Diagnosis Step Output {"diagnosis":{"issue_type":"pipe_leak","confidence":0.9}} 
+[2026-05-28 22:42:19] testing.ERROR: AI Pipeline failed {"pipeline_id":1,"error":"Service unreachable"} 
+[2026-05-28 22:42:19] testing.INFO: Matching plumbers for booking 6: 0 found  
+[2026-05-28 22:42:19] testing.INFO: No matching plumbers found for booking 6  
+[2026-05-28 22:42:19] testing.INFO: Booking details - lat: 27.7172, lng: 85.324, service_type_id: 6  
+[2026-05-28 22:42:19] testing.INFO: AI Pipeline started {"pipeline_id":2,"user_id":13} 
+[2026-05-28 22:42:20] testing.WARNING: AI Agent Failed {"agent":"PlumbingDiagnoser","provider":"gemini","model":"gemini-2.5-flash","error":"HTTP request returned status code 403:
+{
+  \"error\": {
+    \"code\": 403,
+    \"message\": \"Method doesn't allow unregistered callers (callers without established i (truncated...)
+"} 
+[2026-05-28 22:42:23] testing.INFO: AI Agent Success {"agent":"PlumbingDiagnoser","provider":"ollama","model":"qwen2.5-coder:1.5b"} 
+[2026-05-28 22:42:23] testing.INFO: Diagnosis Step Output {"diagnosis":{"estimated_price_max":2000,"confidence":1.0,"provider":"ollama","model":"qwen2.5-coder:1.5b"}} 
+[2026-05-28 22:42:23] testing.INFO: StepCompletedEvent fired {"pipelineId":3,"stepName":"RunDiagnosisStep"} 
+[2026-05-28 22:42:23] testing.INFO: broadcastOn executed {"pipelineId":3} 
+[2026-05-28 22:42:24] testing.INFO: Matching plumbers for booking 7: 0 found  
+[2026-05-28 22:42:24] testing.INFO: No matching plumbers found for booking 7  
+[2026-05-28 22:42:24] testing.INFO: Booking details - lat: 27.7172, lng: 85.324, service_type_id: 8  
+[2026-05-28 22:42:24] testing.INFO: Broadcasting auth request {"user_id":17,"role":"plumber","channel_name":"private-plumbers.3","socket_id":"1234.5678"} 
+[2026-05-28 22:42:24] testing.INFO: CHANNEL AUTH {"user_id":17,"role":"plumber","relationship_profile_id":3,"requested_channel":"3"} 
+[2026-05-28 22:42:24] testing.INFO: Broadcasting auth request {"user_id":18,"role":"plumber","channel_name":"private-plumbers.4","socket_id":"1234.5678"} 
+[2026-05-28 22:42:24] testing.INFO: CHANNEL AUTH {"user_id":18,"role":"plumber","relationship_profile_id":4,"requested_channel":"4"} 
+[2026-05-28 22:42:24] testing.INFO: Broadcasting auth request {"user_id":19,"role":"customer","channel_name":"private-user.19","socket_id":"1234.5678"} 
+[2026-05-28 22:42:25] testing.INFO: Diagnosis Step Output {"diagnosis":{"issue_type":"pipe_leak","confidence":0.9}} 
+[2026-05-28 22:45:30] testing.WARNING: AI Agent Failed {"agent":"PlumbingDiagnoser","provider":"gemini","model":"gemini-2.5-flash","error":"HTTP request returned status code 403:
+{
+  \"error\": {
+    \"code\": 403,
+    \"message\": \"Method doesn't allow unregistered callers (callers without established i (truncated...)
+"} 
+[2026-05-28 22:45:53] testing.INFO: AI Agent Success {"agent":"PlumbingDiagnoser","provider":"ollama","model":"qwen2.5-coder:1.5b"} 
+[2026-05-28 22:45:53] testing.INFO: Diagnosis Step Output {"diagnosis":{"summary":"A leaky pipe under a sink can cause water damage and may require immediate attention to prevent further issues. The estimated cost for this repair is approximately 4,500 NPR (based on current market rates). If you are unable to address the issue yourself, it is recommended that you consult with a professional plumber immediately. This could include a quick check at your sink, or if necessary, a full inspection of the pipe leading from the faucet to the sink drain. It's important to prioritize maintenance and prevent leaks from becoming more severe over time, which can lead to costly repairs in the future. If you have any questions about plumbing or the repair process, please feel free to ask for assistance. ","provider":"ollama","model":"qwen2.5-coder:1.5b"}} 
+[2026-05-28 22:45:53] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"RunDiagnosisStep"} 
+[2026-05-28 22:45:53] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"ValidateDiagnosisStep"} 
+[2026-05-28 22:45:54] testing.WARNING: AI Agent Failed {"agent":"RecommendationAgent","provider":"gemini","model":"gemini-2.5-flash","error":"HTTP request returned status code 403:
+{
+  \"error\": {
+    \"code\": 403,
+    \"message\": \"Method doesn't allow unregistered callers (callers without established i (truncated...)
+"} 
+[2026-05-28 22:46:27] testing.INFO: AI Agent Success {"agent":"RecommendationAgent","provider":"ollama","model":"qwen2.5-coder:1.5b"} 
+[2026-05-28 22:46:27] testing.INFO: Recommendation Step Output {"recommendation":{"summary":"A leaky pipe under a sink is causing water damage and may require immediate attention to prevent further issues. The estimated cost for this repair is approximately 4,500 NPR (based on current market rates). If you are unable to address the issue yourself, it is recommended that you consult with a professional plumber immediately. This could include a quick check at your sink, or if necessary, a full inspection of the pipe leading from the faucet to the sink drain. It's important to prioritize maintenance and prevent leaks from becoming more severe over time, which can lead to costly repairs in the future. If you have any questions about plumbing or the repair process, please feel free to ask for assistance.","provider":"ollama","model":"qwen2.5-coder:1.5b"}} 
+[2026-05-28 22:46:27] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"GenerateRecommendationStep"} 
+[2026-05-28 22:46:27] testing.INFO: AI StoreResultStep completed {"result":{"issue_type":"other","urgency":"medium","estimated_price_min":0,"estimated_price_max":0,"confidence":0,"summary":"A leaky pipe under a sink is causing water damage and may require immediate attention to prevent further issues. The estimated cost for this repair is approximately 4,500 NPR (based on current market rates). If you are unable to address the issue yourself, it is recommended that you consult with a professional plumber immediately. This could include a quick check at your sink, or if necessary, a full inspection of the pipe leading from the faucet to the sink drain. It's important to prioritize maintenance and prevent leaks from becoming more severe over time, which can lead to costly repairs in the future. If you have any questions about plumbing or the repair process, please feel free to ask for assistance.","recommended_service":"General Plumbing Service"}} 
+[2026-05-28 22:46:27] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"StoreResultStep"} 
+[2026-05-28 22:48:02] testing.WARNING: AI Agent Failed {"agent":"PlumbingDiagnoser","provider":"gemini","model":"gemini-2.5-flash","error":"HTTP request returned status code 403:
+{
+  \"error\": {
+    \"code\": 403,
+    \"message\": \"Method doesn't allow unregistered callers (callers without established i (truncated...)
+"} 
+[2026-05-28 22:48:06] testing.INFO: AI Agent Success {"agent":"PlumbingDiagnoser","provider":"ollama","model":"qwen2.5-coder:1.5b"} 
+[2026-05-28 22:48:06] testing.INFO: Diagnosis Step Output {"diagnosis":{"confidence":1.0,"provider":"ollama","model":"qwen2.5-coder:1.5b"}} 
+[2026-05-28 22:48:06] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"RunDiagnosisStep"} 
+[2026-05-28 22:48:06] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"ValidateDiagnosisStep"} 
+[2026-05-28 22:48:06] testing.WARNING: AI Agent Failed {"agent":"RecommendationAgent","provider":"gemini","model":"gemini-2.5-flash","error":"HTTP request returned status code 403:
+{
+  \"error\": {
+    \"code\": 403,
+    \"message\": \"Method doesn't allow unregistered callers (callers without established i (truncated...)
+"} 
+[2026-05-28 22:48:47] testing.INFO: AI Agent Success {"agent":"RecommendationAgent","provider":"ollama","model":"qwen2.5-coder:1.5b"} 
+[2026-05-28 22:48:47] testing.INFO: Recommendation Step Output {"recommendation":{"issue_type":"other","urgency":"medium","estimated_price_min":0,"estimated_price_max":0,"recommended_service":"General Plumbing Service","summary":"No specific issue or diagnosis summary provided, but it seems there may be a plumbing-related problem in the home. It's recommended to have a licensed plumber inspect the pipes and drains to determine the exact nature of the issue. Homeowners can use household tools like adjustable wrenches, pipe wrenches, buckets, flashlight, Teflon tape, screwdriver, plunger, drain snake, and gloves when conducting inspections. They should also avoid using chemical drain cleaners, wear gloves when inspecting drains, and do not disassemble pressurized pipes. It's important to follow safety precautions while conducting inspections, as improper handling can lead to accidents or damage to the plumbing system. Additionally, it's recommended that homeowners schedule a professional inspection with a licensed plumber at their earliest convenience to determine the best course of action and to ensure their home's plumbing is in good working order. In conclusion, it's important for homeowners to take proactive measures to prevent plumbing-related problems and to have a licensed plumber inspect the pipes and drains to identify and resolve any issues before they become critical. ","provider":"ollama","model":"qwen2.5-coder:1.5b"}} 
+[2026-05-28 22:48:47] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"GenerateRecommendationStep"} 
+[2026-05-28 22:48:47] testing.INFO: AI StoreResultStep completed {"result":{"issue_type":"other","urgency":"medium","estimated_price_min":0,"estimated_price_max":0,"confidence":1,"summary":"No specific issue or diagnosis summary provided, but it seems there may be a plumbing-related problem in the home. It's recommended to have a licensed plumber inspect the pipes and drains to determine the exact nature of the issue. Homeowners can use household tools like adjustable wrenches, pipe wrenches, buckets, flashlight, Teflon tape, screwdriver, plunger, drain snake, and gloves when conducting inspections. They should also avoid using chemical drain cleaners, wear gloves when inspecting drains, and do not disassemble pressurized pipes. It's important to follow safety precautions while conducting inspections, as improper handling can lead to accidents or damage to the plumbing system. Additionally, it's recommended that homeowners schedule a professional inspection with a licensed plumber at their earliest convenience to determine the best course of action and to ensure their home's plumbing is in good working order. In conclusion, it's important for homeowners to take proactive measures to prevent plumbing-related problems and to have a licensed plumber inspect the pipes and drains to identify and resolve any issues before they become critical. ","recommended_service":"General Plumbing Service"}} 
+[2026-05-28 22:48:47] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"StoreResultStep"} 
+[2026-05-28 22:50:58] testing.WARNING: AI Agent Failed {"agent":"PlumbingDiagnoser","provider":"gemini","model":"gemini-2.5-flash","error":"HTTP request returned status code 403:
+{
+  \"error\": {
+    \"code\": 403,
+    \"message\": \"Method doesn't allow unregistered callers (callers without established i (truncated...)
+"} 
+[2026-05-28 22:51:13] testing.INFO: AI Agent Success {"agent":"PlumbingDiagnoser","provider":"ollama","model":"qwen2.5-coder:1.5b"} 
+[2026-05-28 22:51:13] testing.INFO: Diagnosis Step Output {"diagnosis":{"confidence":0.3,"summary":"I apologize for any inconvenience caused by the leak in your sink. To determine the exact cause and estimate repair costs, I would need more information about the pipe material, installation date, and level of damage. Please provide additional details such as the location of the leak, if it's caused by water pressure issues, or if you have any other plumbing concerns. Based on this information, we can then provide a more accurate pricing estimate.","provider":"ollama","model":"qwen2.5-coder:1.5b"}} 
+[2026-05-28 22:51:13] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"RunDiagnosisStep"} 
+[2026-05-28 22:51:13] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"ValidateDiagnosisStep"} 
+[2026-05-28 22:51:13] testing.WARNING: AI Agent Failed {"agent":"RecommendationAgent","provider":"gemini","model":"gemini-2.5-flash","error":"HTTP request returned status code 403:
+{
+  \"error\": {
+    \"code\": 403,
+    \"message\": \"Method doesn't allow unregistered callers (callers without established i (truncated...)
+"} 
+[2026-05-28 22:51:38] testing.INFO: AI Agent Success {"agent":"RecommendationAgent","provider":"ollama","model":"qwen2.5-coder:1.5b"} 
+[2026-05-28 22:51:38] testing.INFO: Recommendation Step Output {"recommendation":{"summary":"We apologize for the inconvenience caused by the leak in your sink. To determine the exact cause and estimate repair costs, we would need more information about the pipe material, installation date, and level of damage. Please provide additional details such as the location of the leak, if it's caused by water pressure issues, or if you have any other plumbing concerns. Based on this information, we can then provide a more accurate pricing estimate.","provider":"ollama","model":"qwen2.5-coder:1.5b"}} 
+[2026-05-28 22:51:38] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"GenerateRecommendationStep"} 
+[2026-05-28 22:51:38] testing.INFO: AI StoreResultStep completed {"result":{"issue_type":"other","urgency":"medium","estimated_price_min":0,"estimated_price_max":0,"confidence":0.3,"summary":"We apologize for the inconvenience caused by the leak in your sink. To determine the exact cause and estimate repair costs, we would need more information about the pipe material, installation date, and level of damage. Please provide additional details such as the location of the leak, if it's caused by water pressure issues, or if you have any other plumbing concerns. Based on this information, we can then provide a more accurate pricing estimate.","recommended_service":"General Plumbing Service"}} 
+[2026-05-28 22:51:38] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"StoreResultStep"} 
+[2026-05-28 22:53:10] testing.WARNING: AI Agent Failed {"agent":"PlumbingDiagnoser","provider":"gemini","model":"gemini-2.5-flash","error":"HTTP request returned status code 403:
+{
+  \"error\": {
+    \"code\": 403,
+    \"message\": \"Method doesn't allow unregistered callers (callers without established i (truncated...)
+"} 
+[2026-05-28 22:53:18] testing.INFO: AI Agent Success {"agent":"PlumbingDiagnoser","provider":"ollama","model":"qwen2.5-coder:1.5b"} 
+[2026-05-28 22:53:18] testing.INFO: Diagnosis Step Output {"diagnosis":{"confidence":0.95,"summary":"A pipe is leaking beneath a sink in your home. To diagnose and repair the issue, please contact PlumbNepal for an immediate service call.","provider":"ollama","model":"qwen2.5-coder:1.5b"}} 
+[2026-05-28 22:53:18] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"RunDiagnosisStep"} 
+[2026-05-28 22:53:18] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"ValidateDiagnosisStep"} 
+[2026-05-28 22:53:18] testing.WARNING: AI Agent Failed {"agent":"RecommendationAgent","provider":"gemini","model":"gemini-2.5-flash","error":"HTTP request returned status code 403:
+{
+  \"error\": {
+    \"code\": 403,
+    \"message\": \"Method doesn't allow unregistered callers (callers without established i (truncated...)
+"} 
+[2026-05-28 22:53:36] testing.INFO: AI Agent Success {"agent":"RecommendationAgent","provider":"ollama","model":"qwen2.5-coder:1.5b"} 
+[2026-05-28 22:53:36] testing.INFO: Recommendation Step Output {"recommendation":{"recommended_service":"General Plumbing Service","summary":"A pipe is leaking beneath a sink in your home. To diagnose and repair the issue, please contact PlumbNepal for an immediate service call.","provider":"ollama","model":"qwen2.5-coder:1.5b"}} 
+[2026-05-28 22:53:36] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"GenerateRecommendationStep"} 
+[2026-05-28 22:53:36] testing.INFO: AI StoreResultStep completed {"result":{"issue_type":"other","urgency":"medium","estimated_price_min":0,"estimated_price_max":0,"confidence":0.95,"summary":"A pipe is leaking beneath a sink in your home. To diagnose and repair the issue, please contact PlumbNepal for an immediate service call.","recommended_service":"General Plumbing Service"}} 
+[2026-05-28 22:53:36] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"StoreResultStep"} 
+[2026-05-28 22:56:11] testing.WARNING: AI Agent Failed {"agent":"PlumbingDiagnoser","provider":"gemini","model":"gemini-2.5-flash","error":"HTTP request returned status code 403:
+{
+  \"error\": {
+    \"code\": 403,
+    \"message\": \"Method doesn't allow unregistered callers (callers without established i (truncated...)
+"} 
+[2026-05-28 22:56:19] testing.INFO: AI Agent Success {"agent":"PlumbingDiagnoser","provider":"ollama","model":"qwen2.5-coder:1.5b"} 
+[2026-05-28 22:56:19] testing.INFO: Diagnosis Step Output {"diagnosis":{"confidence":0.2,"summary":"It is not possible to give an accurate estimate without knowing the specific location and severity of the leak under your sink. Please contact a plumber for a thorough inspection.","provider":"ollama","model":"qwen2.5-coder:1.5b"}} 
+[2026-05-28 22:56:19] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"RunDiagnosisStep"} 
+[2026-05-28 22:56:19] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"ValidateDiagnosisStep"} 
+[2026-05-28 22:56:19] testing.WARNING: AI Agent Failed {"agent":"RecommendationAgent","provider":"gemini","model":"gemini-2.5-flash","error":"HTTP request returned status code 403:
+{
+  \"error\": {
+    \"code\": 403,
+    \"message\": \"Method doesn't allow unregistered callers (callers without established i (truncated...)
+"} 
+[2026-05-28 22:56:36] testing.INFO: AI Agent Success {"agent":"RecommendationAgent","provider":"ollama","model":"qwen2.5-coder:1.5b"} 
+[2026-05-28 22:56:36] testing.INFO: Recommendation Step Output {"recommendation":{"recommended_service":"Professional Plumbing Inspection","summary":"It is not possible to give an accurate estimate without knowing the specific location and severity of the leak under your sink. Please contact a plumber for a thorough inspection.","provider":"ollama","model":"qwen2.5-coder:1.5b"}} 
+[2026-05-28 22:56:36] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"GenerateRecommendationStep"} 
+[2026-05-28 22:56:36] testing.INFO: AI StoreResultStep completed {"result":{"issue_type":"other","urgency":"medium","estimated_price_min":0,"estimated_price_max":0,"confidence":0.2,"summary":"It is not possible to give an accurate estimate without knowing the specific location and severity of the leak under your sink. Please contact a plumber for a thorough inspection.","recommended_service":"Professional Plumbing Inspection"}} 
+[2026-05-28 22:56:36] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"StoreResultStep"} 
+[2026-05-28 22:59:32] testing.WARNING: AI Agent Failed {"agent":"PlumbingDiagnoser","provider":"gemini","model":"gemini-2.5-flash","error":"HTTP request returned status code 403:
+{
+  \"error\": {
+    \"code\": 403,
+    \"message\": \"Method doesn't allow unregistered callers (callers without established i (truncated...)
+"} 
+[2026-05-28 22:59:44] testing.INFO: AI Agent Success {"agent":"PlumbingDiagnoser","provider":"ollama","model":"qwen2.5-coder:1.5b"} 
+[2026-05-28 22:59:44] testing.INFO: Diagnosis Step Output {"diagnosis":{"confidence":0.5,"summary":"The user has described a pipe leak under the sink. It is important to ensure that this issue is resolved immediately as it could lead to water damage, mold growth, and potentially other health risks. If you have any concerns or questions about the situation, please contact a qualified plumber or professional immediately. ","provider":"ollama","model":"qwen2.5-coder:1.5b"}} 
+[2026-05-28 22:59:44] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"RunDiagnosisStep"} 
+[2026-05-28 22:59:44] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"ValidateDiagnosisStep"} 
+[2026-05-28 22:59:44] testing.WARNING: AI Agent Failed {"agent":"RecommendationAgent","provider":"gemini","model":"gemini-2.5-flash","error":"HTTP request returned status code 403:
+{
+  \"error\": {
+    \"code\": 403,
+    \"message\": \"Method doesn't allow unregistered callers (callers without established i (truncated...)
+"} 
+[2026-05-28 23:00:04] testing.INFO: AI Agent Success {"agent":"RecommendationAgent","provider":"ollama","model":"qwen2.5-coder:1.5b"} 
+[2026-05-28 23:00:04] testing.INFO: Recommendation Step Output {"recommendation":{"recommended_service":"Emergency Plumber","summary":"It is highly important that the pipe leak under the sink be resolved immediately as it could lead to water damage, mold growth, and potentially other health risks. If you have any concerns or questions about the situation, please contact a qualified plumber or professional immediately.","provider":"ollama","model":"qwen2.5-coder:1.5b"}} 
+[2026-05-28 23:00:04] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"GenerateRecommendationStep"} 
+[2026-05-28 23:00:04] testing.INFO: AI StoreResultStep completed {"result":{"issue_type":"other","urgency":"medium","estimated_price_min":0,"estimated_price_max":0,"confidence":0.5,"summary":"It is highly important that the pipe leak under the sink be resolved immediately as it could lead to water damage, mold growth, and potentially other health risks. If you have any concerns or questions about the situation, please contact a qualified plumber or professional immediately.","recommended_service":"Emergency Plumber"}} 
+[2026-05-28 23:00:04] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"StoreResultStep"} 
+[2026-05-28 23:02:58] testing.WARNING: AI Agent Failed {"agent":"PlumbingDiagnoser","provider":"gemini","model":"gemini-2.5-flash","error":"HTTP request returned status code 403:
+{
+  \"error\": {
+    \"code\": 403,
+    \"message\": \"Method doesn't allow unregistered callers (callers without established i (truncated...)
+"} 
+[2026-05-28 23:03:04] testing.INFO: AI Agent Success {"agent":"PlumbingDiagnoser","provider":"ollama","model":"qwen2.5-coder:1.5b"} 
+[2026-05-28 23:03:04] testing.INFO: Diagnosis Step Output {"diagnosis":{"confidence":0.95,"summary":"A leak is detected beneath a sink in your plumbing system.","provider":"ollama","model":"qwen2.5-coder:1.5b"}} 
+[2026-05-28 23:03:04] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"RunDiagnosisStep"} 
+[2026-05-28 23:03:04] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"ValidateDiagnosisStep"} 
+[2026-05-28 23:03:04] testing.WARNING: AI Agent Failed {"agent":"RecommendationAgent","provider":"gemini","model":"gemini-2.5-flash","error":"HTTP request returned status code 403:
+{
+  \"error\": {
+    \"code\": 403,
+    \"message\": \"Method doesn't allow unregistered callers (callers without established i (truncated...)
+"} 
+[2026-05-28 23:03:24] testing.INFO: AI Agent Success {"agent":"RecommendationAgent","provider":"ollama","model":"qwen2.5-coder:1.5b"} 
+[2026-05-28 23:03:24] testing.INFO: Recommendation Step Output {"recommendation":{"summary":"Based on the diagnostic information provided, a leak is detected beneath the sink in your plumbing system. This issue is relatively common and is often caused by wear and tear over time or improper maintenance. Here are some practical recommendations for homeowners to understand and address this issue safely:","provider":"ollama","model":"qwen2.5-coder:1.5b"}} 
+[2026-05-28 23:03:24] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"GenerateRecommendationStep"} 
+[2026-05-28 23:03:24] testing.INFO: AI StoreResultStep completed {"result":{"issue_type":"other","urgency":"medium","estimated_price_min":0,"estimated_price_max":0,"confidence":0.95,"summary":"Based on the diagnostic information provided, a leak is detected beneath the sink in your plumbing system. This issue is relatively common and is often caused by wear and tear over time or improper maintenance. Here are some practical recommendations for homeowners to understand and address this issue safely:","recommended_service":"General Plumbing Service"}} 
+[2026-05-28 23:03:24] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"StoreResultStep"} 
+[2026-05-28 23:09:09] testing.INFO: Diagnosis Step Output {"diagnosis":{"issue_type":"pipe_leak","confidence":0.9,"urgency":"medium","summary":"Mocked AI response"}} 
+[2026-05-28 23:09:09] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"RunDiagnosisStep"} 
+[2026-05-28 23:09:09] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"ValidateDiagnosisStep"} 
+[2026-05-28 23:09:09] testing.INFO: Recommendation Step Output {"recommendation":{"issue_type":"pipe_leak","confidence":0.9,"urgency":"medium","summary":"Mocked AI response"}} 
+[2026-05-28 23:09:09] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"GenerateRecommendationStep"} 
+[2026-05-28 23:09:09] testing.INFO: AI StoreResultStep completed {"result":{"issue_type":"pipe_leak","urgency":"medium","estimated_price_min":0,"estimated_price_max":0,"confidence":0.9,"summary":"Mocked AI response","recommended_service":"General Plumbing Service"}} 
+[2026-05-28 23:09:09] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"StoreResultStep"} 
+[2026-05-28 23:09:36] testing.INFO: Diagnosis Step Output {"diagnosis":{"issue_type":"pipe_leak","confidence":0.9,"urgency":"medium","summary":"Mocked AI response"}} 
+[2026-05-28 23:09:36] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"RunDiagnosisStep"} 
+[2026-05-28 23:09:36] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"ValidateDiagnosisStep"} 
+[2026-05-28 23:09:36] testing.INFO: Recommendation Step Output {"recommendation":{"issue_type":"pipe_leak","confidence":0.9,"urgency":"medium","summary":"Mocked AI response"}} 
+[2026-05-28 23:09:36] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"GenerateRecommendationStep"} 
+[2026-05-28 23:09:36] testing.INFO: AI StoreResultStep completed {"result":{"issue_type":"pipe_leak","urgency":"medium","estimated_price_min":0,"estimated_price_max":0,"confidence":0.9,"summary":"Mocked AI response","recommended_service":"General Plumbing Service"}} 
+[2026-05-28 23:09:36] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"StoreResultStep"} 
+[2026-05-28 23:11:55] testing.INFO: Diagnosis Step Output {"diagnosis":{"issue_type":"pipe_leak","confidence":0.9,"urgency":"medium","summary":"Mocked AI response"}} 
+[2026-05-28 23:11:55] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"RunDiagnosisStep"} 
+[2026-05-28 23:11:55] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"ValidateDiagnosisStep"} 
+[2026-05-28 23:11:55] testing.INFO: Recommendation Step Output {"recommendation":{"issue_type":"pipe_leak","confidence":0.9,"urgency":"medium","summary":"Mocked AI response"}} 
+[2026-05-28 23:11:55] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"GenerateRecommendationStep"} 
+[2026-05-28 23:11:55] testing.INFO: AI StoreResultStep completed {"result":{"issue_type":"pipe_leak","urgency":"medium","estimated_price_min":0,"estimated_price_max":0,"confidence":0.9,"summary":"Mocked AI response","recommended_service":"General Plumbing Service"}} 
+[2026-05-28 23:11:55] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"StoreResultStep"} 
+[2026-05-28 23:12:04] testing.ERROR: AI Pipeline failed {"pipeline_id":1,"error":"Service unreachable"} 
+[2026-05-28 23:12:04] testing.INFO: Matching plumbers for booking 6: 0 found  
+[2026-05-28 23:12:04] testing.INFO: No matching plumbers found for booking 6  
+[2026-05-28 23:12:04] testing.INFO: Booking details - lat: 27.7172, lng: 85.324, service_type_id: 6  
+[2026-05-28 23:12:04] testing.INFO: AI Pipeline started {"pipeline_id":2,"user_id":13} 
+[2026-05-28 23:12:05] testing.INFO: Diagnosis Step Output {"diagnosis":{"issue_type":"pipe_leak","confidence":0.9,"urgency":"medium","summary":"Mocked AI response"}} 
+[2026-05-28 23:12:05] testing.INFO: StepCompletedEvent fired {"pipelineId":3,"stepName":"RunDiagnosisStep"} 
+[2026-05-28 23:12:05] testing.INFO: StepCompletedEvent fired {"pipelineId":3,"stepName":"ValidateDiagnosisStep"} 
+[2026-05-28 23:12:05] testing.INFO: Recommendation Step Output {"recommendation":{"issue_type":"pipe_leak","confidence":0.9,"urgency":"medium","summary":"Mocked AI response"}} 
+[2026-05-28 23:12:05] testing.INFO: StepCompletedEvent fired {"pipelineId":3,"stepName":"GenerateRecommendationStep"} 
+[2026-05-28 23:12:05] testing.INFO: AI StoreResultStep completed {"result":{"issue_type":"pipe_leak","urgency":"medium","estimated_price_min":0,"estimated_price_max":0,"confidence":0.9,"summary":"Mocked AI response","recommended_service":"General Plumbing Service"}} 
+[2026-05-28 23:12:05] testing.INFO: StepCompletedEvent fired {"pipelineId":3,"stepName":"StoreResultStep"} 
+[2026-05-28 23:12:05] testing.INFO: Matching plumbers for booking 7: 0 found  
+[2026-05-28 23:12:05] testing.INFO: No matching plumbers found for booking 7  
+[2026-05-28 23:12:05] testing.INFO: Booking details - lat: 27.7172, lng: 85.324, service_type_id: 8  
+[2026-05-28 23:12:05] testing.INFO: Broadcasting auth request {"user_id":17,"role":"plumber","channel_name":"private-plumbers.3","socket_id":"1234.5678"} 
+[2026-05-28 23:12:05] testing.INFO: CHANNEL AUTH {"user_id":17,"role":"plumber","relationship_profile_id":3,"requested_channel":"3"} 
+[2026-05-28 23:12:05] testing.INFO: Broadcasting auth request {"user_id":18,"role":"plumber","channel_name":"private-plumbers.4","socket_id":"1234.5678"} 
+[2026-05-28 23:12:05] testing.INFO: CHANNEL AUTH {"user_id":18,"role":"plumber","relationship_profile_id":4,"requested_channel":"4"} 
+[2026-05-28 23:12:05] testing.INFO: Broadcasting auth request {"user_id":19,"role":"customer","channel_name":"private-user.19","socket_id":"1234.5678"} 
+[2026-05-28 23:12:06] testing.INFO: Diagnosis Step Output {"diagnosis":{"issue_type":"pipe_leak","confidence":0.9}} 
