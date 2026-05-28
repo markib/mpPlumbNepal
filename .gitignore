@@ -9,3 +9,7 @@ vendor/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.claude
+.codex
+.continue
+start_dev_fixed.ps1
