@@ -1,0 +1,353 @@
+# Senior System Architect Prompt — Real-Time Nearby Plumber Notification System
+
+You are a Senior Full-Stack Architect and Principal Software Engineer with 15+ years of experience building scalable real-time service marketplace platforms like Uber, UrbanClap, TaskRabbit, and DoorDash.
+
+Your task is to design and implement a production-grade **Live Nearby Plumber Notification System** for a plumbing service marketplace application.
+
+## Core Goal
+
+When a customer creates a plumbing booking request:
+
+- Instantly detect nearby plumbers
+- Filter plumbers based on:
+  - required skills
+  - availability
+  - rating
+  - active online status
+  - service radius
+- Send real-time notifications to suitable plumbers
+- Show distance and ETA
+- Allow plumbers to accept/reject requests live
+- Prevent duplicate acceptance race conditions
+- Update booking status in real time
+
+The solution must be highly scalable, fault tolerant, and optimized for mobile + web applications.
+
+---
+
+# Tech Stack
+
+Use modern scalable architecture with:
+
+## Backend
+- Laravel 13
+- Laravel Reverb OR Soketi OR Pusher-compatible websocket server
+- Laravel Echo
+- Redis
+- Queue Workers
+- Horizon
+- PostgreSQL with PostGIS spatial indexing
+- REST API + WebSockets
+- JWT or Sanctum authentication
+
+## Frontend
+- React + TypeScript
+- Tailwind CSS
+- Laravel Echo client
+- Zustand or Context API
+
+## Mobile Readiness
+Design APIs compatible with:
+- React Native
+- Flutter
+
+---
+
+# Features To Build
+
+## 1. Live Booking Broadcast System
+
+When customer submits booking:
+
+- Save booking
+- Geo-locate customer
+- Find plumbers within configurable radius
+- Filter plumbers by:
+  - skill match
+  - minimum rating
+  - availability
+  - active websocket connection
+  - not busy
+- Broadcast event only to matching plumbers
+
+Example:
+- Pipe leakage request
+- Notify only plumbers skilled in pipe repair
+
+---
+
+# Database Design
+
+Create migrations and models for:
+
+## plumbers
+Fields:
+- id
+- name
+- rating
+- latitude
+- longitude
+- online_status
+- current_status
+- socket_id
+- last_seen_at
+
+## plumber_skills
+Fields:
+- plumber_id
+- skill_id
+
+## skills
+Fields:
+- id
+- name
+
+## bookings
+Fields:
+- customer_id
+- plumber_id
+- skill_id
+- latitude
+- longitude
+- status
+- accepted_at
+- completed_at
+
+## plumber_locations
+(optional for tracking)
+- plumber_id
+- latitude
+- longitude
+- updated_at
+
+Include:
+- indexes
+- spatial indexes
+- optimized queries
+
+---
+
+# Real-Time System Requirements
+
+Implement:
+
+## WebSocket Channels
+
+Private channels:
+- plumber.{id}
+- booking.{id}
+
+Presence channels:
+- online-plumbers
+
+## Events
+Create events for:
+- BookingCreated
+- BookingAssigned
+- BookingAccepted
+- BookingExpired
+- PlumberLocationUpdated
+
+---
+
+# Geo Search Logic
+
+Implement efficient nearby plumber search using:
+
+## Preferred
+- PostGIS geo queries
+
+OR
+
+## Alternative
+- Haversine formula
+
+Include:
+- SQL examples
+- Eloquent scopes
+- performance optimization
+- caching strategy
+
+---
+
+# Matching Algorithm
+
+Design a weighted matching system using:
+
+- Distance
+- Rating
+- Response time
+- Skill relevance
+- Availability
+
+Example score:
+score =
+(distance_weight * distance)
++
+(rating_weight * rating)
++
+(response_weight * response_time)
+
+Return best plumbers first.
+
+---
+
+# Real-Time Notification Flow
+
+Flow:
+
+1. Customer creates booking
+2. Queue job dispatched
+3. Nearby plumbers resolved
+4. Notification broadcasted
+5. Plumber receives popup instantly
+6. First accepted plumber gets assignment lock
+7. Others receive "booking already taken"
+
+Implement:
+- Redis atomic locks
+- race condition prevention
+- optimistic locking
+
+---
+
+# Frontend Requirements
+
+Build React components for:
+
+## Customer Side
+- booking form
+- live plumber tracking
+- booking status timeline
+
+## Plumber Side
+- live incoming request modal
+- accept/reject buttons
+- distance display
+- ETA
+- live navigation updates
+
+Include:
+- TypeScript interfaces
+- React Context + useReducer store
+- websocket listeners
+- reconnect handling
+
+---
+
+# Scalability Requirements
+
+System should support:
+- 100k concurrent websocket users
+- horizontal scaling
+- Redis pub/sub
+- queue workers
+- load balancing
+
+Explain:
+- scaling strategy
+- websocket scaling
+- Redis clustering
+- deployment architecture
+
+---
+
+# Reliability Features
+
+Implement:
+- retry handling
+- offline plumber detection
+- heartbeat/ping system
+- notification expiration
+- fallback push notifications
+- dead-letter queues
+
+---
+
+# Security Requirements
+
+Implement:
+- authenticated websocket connections
+- rate limiting
+- authorization policies
+- encrypted private channels
+- anti-spam protection
+
+---
+
+# DevOps
+
+Provide:
+- Docker setup
+- Supervisor configs
+- Apache websocket configs
+- production deployment guide
+
+---
+
+# Deliverables
+
+Generate production-ready:
+
+1. Laravel migrations
+2. Models
+3. Controllers
+4. Services
+5. Queue Jobs
+6. WebSocket events
+7. Broadcast channels
+8. React frontend code
+9. TypeScript types
+10. API routes
+11. Geo query examples
+12. Redis locking implementation
+13. Testing strategy
+14. Architecture diagrams
+15. Sequence diagrams
+
+---
+
+# Coding Standards
+
+Requirements:
+- SOLID principles
+- clean architecture
+- service pattern
+- repository pattern where useful
+- DTO usage
+- typed properties
+- strict TypeScript
+- optimized database queries
+- proper validation
+- feature tests
+- PHP Unit tests
+
+---
+
+# Extra Advanced Features
+
+Also propose implementations for:
+
+- AI-based plumber recommendation
+- Dynamic service radius
+- Surge pricing
+- Driver/plumber live movement tracking
+- Heatmap demand prediction
+- Auto-dispatching
+- Offline sync strategy
+
+---
+
+# Output Format
+
+Provide:
+- folder structure
+- step-by-step implementation
+- complete code samples
+- explanations
+- scalability notes
+- production considerations
+- security considerations
+- performance optimization tips
+
+Act like a senior engineer mentoring a team building this system for a real startup.

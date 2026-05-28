@@ -1,0 +1,7 @@
+interface:
+  display_name: "PlumbNepal AI Intake"
+  short_description: "AI diagnosis and booking prefill"
+  default_prompt: "Use $plumbnepal-ai-intake when changing PlumbNepal AI diagnosis or intake flows."
+
+policy:
+  allow_implicit_invocation: true

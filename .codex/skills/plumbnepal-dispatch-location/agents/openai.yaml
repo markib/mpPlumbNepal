@@ -1,0 +1,7 @@
+interface:
+  display_name: "PlumbNepal Dispatch Location"
+  short_description: "PostGIS dispatch and live tracking"
+  default_prompt: "Use $plumbnepal-dispatch-location when changing plumber dispatch or location tracking."
+
+policy:
+  allow_implicit_invocation: true

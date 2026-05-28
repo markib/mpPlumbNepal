@@ -1,0 +1,18 @@
+{
+  "bookService": "Book a Plumbing Service",
+  "landmark": "Nearby Landmark",
+  "wardNumber": "Ward Number",
+  "toleName": "Tole / Neighborhood",
+  "serviceNotes": "Service note or issue description",
+  "isEmergency": "Emergency service",
+  "paymentMethod": "Payment method",
+  "cod": "Cash on Delivery",
+  "requestService": "Request Service",
+  "submitting": "Submitting...",
+  "createAnotherBooking": "Create Another Booking",
+  "bookingCreated": "Booking Created",
+  "bookingSuccess": "Booking created successfully! A nearby plumber will be dispatched.",
+  "bookingError": "Unable to create booking. Please try again.",
+  "pinOnMapInstruction": "Tap the map to pin your exact location. Use landmark text when your house number is missing.",
+  "currentCoordinates": "Selected coordinates"
+}

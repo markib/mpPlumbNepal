@@ -1,0 +1,10 @@
+﻿PHPUnit 10.5.63 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.4.20
+Configuration: C:\xampp\htdocs\PlumbNepal\phpunit.ci.xml
+
+......                                                              6 / 6 (100%)
+
+Time: 00:01.949, Memory: 40.00 MB
+
+OK (6 tests, 20 assertions)

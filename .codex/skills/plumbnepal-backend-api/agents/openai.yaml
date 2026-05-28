@@ -1,0 +1,7 @@
+interface:
+  display_name: "PlumbNepal Backend API"
+  short_description: "Laravel API, models, migrations, tests"
+  default_prompt: "Use $plumbnepal-backend-api when changing PlumbNepal Laravel backend APIs or data models."
+
+policy:
+  allow_implicit_invocation: true

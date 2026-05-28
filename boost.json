@@ -1,0 +1,11 @@
+{
+    "agents": [
+        "copilot"
+    ],
+    "cloud": false,
+    "skills": [
+        "ai-sdk-development",
+        "laravel-best-practices",
+        "tailwindcss-development"
+    ]
+}

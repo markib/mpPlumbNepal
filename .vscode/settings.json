@@ -1,0 +1,16 @@
+{
+    "claudeCode.environmentVariables": [
+
+      
+        {
+      "name": "ANTHROPIC_BASE_URL",
+      "value": "http://127.0.0.1:8082"
+    },
+    {
+      "name": "CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS",
+      "value": "1"
+    }
+    ],
+  
+  "claudeCode.disableLoginPrompt": true
+}

@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* AI Scanning Animations */
+@keyframes scan-line {
+    0% {
+        top: 0%;
+    }
+    100% {
+        top: 100%;
+    }
+}
+
+@keyframes progress {
+    0% {
+        width: 0%;
+    }
+    50% {
+        width: 70%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+.animate-scan-line {
+    animation: scan-line 2s ease-in-out infinite;
+}
+
+.animate-progress {
+    animation: progress 3s ease-in-out infinite;
+}
+
+body {
+  @apply bg-slate-50 text-slate-900 antialiased;
+}
+
+button,
+input,
+select,
+textarea {
+  @apply border border-slate-300 rounded-md px-3 py-2 outline-none focus:border-cyan-600 focus:ring-2 focus:ring-cyan-200;
+}
