@@ -1,7 +1,0 @@
-interface:
-  display_name: "PlumbNepal Frontend UI"
-  short_description: "React booking UI, dashboards, maps"
-  default_prompt: "Use $plumbnepal-frontend-ui when changing the PlumbNepal React frontend."
-
-policy:
-  allow_implicit_invocation: true
