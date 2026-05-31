@@ -1,5 +1,7 @@
 <?php
+
 // app/Http/Controllers/Api/AiController.php
+
 namespace App\Http\Controllers\Api;
 
 use App\Ai\Agents\Diagnosis\DiagnosisValidator;
@@ -20,10 +22,10 @@ class AiController extends Controller
      * 3. Persists successful hits for marketplace analytics.
      * 4. Returns JSON for the React frontend.
      */
-    public function diagnose(DiagnoseRequest $request,  AiPipelineService $service): JsonResponse
+    public function diagnose(DiagnoseRequest $request, AiPipelineService $service): JsonResponse
     {
         $diagnosisId = null;
-        
+
         try {
 
             $pipeline = $service->start(
@@ -37,20 +39,19 @@ class AiController extends Controller
             $diagnosisId = $pipeline->id;
             // $analysis = $this->diagnosisValidator->handle($pipeline->result);
 
-            Log::info("AI Pipeline started", [
+            Log::info('AI Pipeline started', [
                 'pipeline_id' => $pipeline->id,
                 'user_id' => $request->user()?->id,
             ]);
 
-        
             return response()->json([
                 'status' => 'processing',
                 'pipeline_id' => $pipeline->id,
-            ],202);
+            ], 202);
         } catch (\Exception $e) {
             return response()->json([
                 'status' => 'error',
-                'message' => $e->getMessage()
+                'message' => $e->getMessage(),
             ], 502); // Bad Gateway - appropriate for downstream AI service failure
         }
     }

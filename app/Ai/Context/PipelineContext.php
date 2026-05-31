@@ -6,6 +6,7 @@ class PipelineContext
 {
     // Handle both camelCase and snake_case properties explicitly
     public int $pipelineId = 0;
+
     public int $pipeline_id = 0;
 
     public function __construct(
@@ -25,6 +26,7 @@ class PipelineContext
         if ($key === 'pipelineId' || $key === 'pipeline_id') {
             return $this->pipelineId;
         }
+
         return $this->get($key);
     }
 

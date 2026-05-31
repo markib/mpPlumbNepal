@@ -3,8 +3,8 @@
 namespace App\Services\Ai;
 
 use Illuminate\Support\Facades\Log;
-use Laravel\Ai\Responses\StructuredTextResponse;
 use Laravel\Ai\Files\Image;
+use Laravel\Ai\Responses\StructuredTextResponse;
 use Throwable;
 
 class AgentRunner
@@ -15,7 +15,7 @@ class AgentRunner
         ?array $image = null
     ): array {
 
-        $hasImage = !empty($image['data'] ?? null);
+        $hasImage = ! empty($image['data'] ?? null);
         $promptText = $this->buildPrompt($message, $hasImage, $image);
         $attachments = $this->prepareAttachments($image);
         $priority = config('ai.priority', ['ollama']);
@@ -23,8 +23,6 @@ class AgentRunner
         $attempts = $this->buildAttempts($priority);
 
         $lastException = null;
-
-
 
         foreach ($attempts as $attempt) {
 
@@ -170,15 +168,17 @@ class AgentRunner
         ];
     }
 
-    // ====================== Other Helper Methods ====================== 
+    // ====================== Other Helper Methods ======================
     private function buildPrompt(string $message, bool $hasImage, ?array $image): string
     {
-        $prompt = "USER DESCRIPTION: " . ($message ?: 'No description provided.');
+        $prompt = 'USER DESCRIPTION: '.($message ?: 'No description provided.');
         if ($hasImage) {
             $prompt .= "\n\nIMAGE ATTACHED: Yes";
         }
+
         return $prompt;
     }
+
     private function prepareAttachments(?array $image): array
     {
         if (empty($image['data'] ?? null)) {
@@ -191,8 +191,7 @@ class AgentRunner
         if (base64_decode($data, true) === false) {
             $data = base64_encode($data);
         }
+
         return [Image::fromBase64($data, $image['mime'] ?? 'image/jpeg')];
     }
-
- 
 }

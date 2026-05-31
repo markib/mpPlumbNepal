@@ -121,6 +121,9 @@ export const BookingRequestModal: React.FC<BookingRequestModalProps> = ({
         return `${mins}:${secs.toString().padStart(2, '0')}`;
     };
 
+    const isAccepting = state.status === 'accepting';
+    const isRejecting = state.status === 'rejecting';
+
     const getStatusMessage = (): string => {
         switch (state.status) {
             case 'accepting':
@@ -242,17 +245,17 @@ export const BookingRequestModal: React.FC<BookingRequestModalProps> = ({
                         <>
                             <button
                                 onClick={handleReject}
-                                disabled={state.status === 'rejecting'}
+                                disabled={isRejecting}
                                 className="flex-1 px-4 py-3 border border-gray-300 text-gray-700 font-medium rounded-xl hover:bg-gray-100 transition-colors disabled:opacity-50"
                             >
-                                {state.status === 'rejecting' ? 'Rejecting...' : 'Reject'}
+                                {isRejecting ? 'Rejecting...' : 'Reject'}
                             </button>
                             <button
                                 onClick={handleAccept}
-                                disabled={state.status === 'accepting'}
+                                disabled={isAccepting}
                                 className="flex-1 px-4 py-3 bg-blue-600 text-white font-medium rounded-xl hover:bg-blue-700 transition-colors disabled:opacity-50"
                             >
-                                {state.status === 'accepting' ? 'Accepting...' : 'Accept'}
+                                {isAccepting ? 'Accepting...' : 'Accept'}
                             </button>
                         </>
                     )}

@@ -2,15 +2,16 @@
 
 namespace App\Services;
 
-use App\Events\BookingBroadcast;
 use App\Events\BookingAssigned;
+use App\Events\BookingBroadcast;
 use App\Events\BookingExpired;
 use App\Events\PlumberLocationUpdated;
 use App\Jobs\BroadcastBookingToPlumbers;
 use App\Models\Booking;
 use App\Models\PlumberProfile;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class BookingBroadcastService
 {
@@ -65,7 +66,7 @@ class BookingBroadcastService
         $lockKey = "booking_accept_{$booking->id}";
         $lock = Cache::lock($lockKey, 10);
 
-        if (!$lock->get()) {
+        if (! $lock->get()) {
             return false;
         }
 
@@ -73,6 +74,7 @@ class BookingBroadcastService
 
         if ($booking->broadcast_status === 'assigned' || $booking->accepted_by_id) {
             $lock->release();
+
             return false;
         }
 
@@ -86,20 +88,21 @@ class BookingBroadcastService
         $lock->release();
     }
 
-    public function getMatchingPlumbers(Booking $booking): \Illuminate\Support\Collection
+    public function getMatchingPlumbers(Booking $booking): Collection
     {
-        $matchingService = new PlumberMatchingService();
+        $matchingService = new PlumberMatchingService;
+
         return $matchingService->matchPlumbersForBooking($booking);
     }
 
-    public function notifyPlumbers(Booking $booking, \Illuminate\Support\Collection $plumbers): int
+    public function notifyPlumbers(Booking $booking, Collection $plumbers): int
     {
         $count = 0;
 
         foreach ($plumbers as $plumber) {
             event(new BookingBroadcast($booking, $plumber));
             $count++;
-            \Illuminate\Support\Facades\Log::info("Broadcasting booking {$booking->id} to plumber {$plumber->id}");
+            Log::info("Broadcasting booking {$booking->id} to plumber {$plumber->id}");
         }
 
         return $count;

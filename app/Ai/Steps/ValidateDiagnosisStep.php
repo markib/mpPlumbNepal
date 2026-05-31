@@ -3,8 +3,8 @@
 namespace App\Ai\Steps;
 
 use App\Ai\Agents\Diagnosis\DiagnosisValidator;
-use App\Ai\Contracts\PipelineStep;
 use App\Ai\Context\PipelineContext;
+use App\Ai\Contracts\PipelineStep;
 
 class ValidateDiagnosisStep implements PipelineStep
 {

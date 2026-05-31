@@ -18,6 +18,7 @@ class ProcessBookingAcceptance implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     public int $tries = 3;
+
     public int $backoff = 5;
 
     public function __construct(
@@ -27,8 +28,9 @@ class ProcessBookingAcceptance implements ShouldQueue
 
     public function handle(BookingBroadcastService $broadcastService): void
     {
-        if (!$broadcastService->acquireAcceptLock($this->booking, $this->plumber)) {
+        if (! $broadcastService->acquireAcceptLock($this->booking, $this->plumber)) {
             Log::info("Could not acquire lock for booking {$this->booking->id}, may already be accepted");
+
             return;
         }
 
@@ -49,6 +51,6 @@ class ProcessBookingAcceptance implements ShouldQueue
         $broadcastService = app(BookingBroadcastService::class);
         $broadcastService->releaseAcceptLock($this->booking);
 
-        Log::error("Failed to process booking acceptance: " . $exception->getMessage());
+        Log::error('Failed to process booking acceptance: '.$exception->getMessage());
     }
 }

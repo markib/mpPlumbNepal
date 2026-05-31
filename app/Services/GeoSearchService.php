@@ -3,8 +3,8 @@
 namespace App\Services;
 
 use App\Models\PlumberProfile;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
 class GeoSearchService
 {
@@ -21,11 +21,11 @@ class GeoSearchService
             ->where('is_available', true)
             ->where('verified', true);
 
-        if (!empty($filters['service_type_ids'])) {
+        if (! empty($filters['service_type_ids'])) {
             $query->whereJsonContains('service_type_ids', $filters['service_type_ids']);
         }
 
-        if (!empty($filters['skill_ids'])) {
+        if (! empty($filters['skill_ids'])) {
             $query->whereHas('skills', function ($q) use ($filters) {
                 $q->whereIn('skills.id', $filters['skill_ids']);
             });
@@ -47,12 +47,13 @@ class GeoSearchService
                 ->map(function ($plumber) {
                     $plumber->distance_km = round($plumber->distance_meters / 1000, 2);
                     $plumber->eta_minutes = $this->calculateETA($plumber->distance_km);
+
                     return $plumber;
                 });
         }
 
         $plumbers = $query->get()
-            ->filter(function ($profile) use ($latitude, $longitude) {
+            ->filter(function ($profile) {
                 return isset($profile->latitude, $profile->longitude);
             })
             ->map(function ($profile) use ($latitude, $longitude) {
@@ -65,6 +66,7 @@ class GeoSearchService
                 $profile->distance_meters = $distanceMeters;
                 $profile->distance_km = round($distanceMeters / 1000, 2);
                 $profile->eta_minutes = $this->calculateETA($profile->distance_km);
+
                 return $profile;
             })
             ->filter(function ($profile) use ($radiusKm) {
@@ -106,6 +108,7 @@ class GeoSearchService
     {
         $averageSpeedKmh = config('plumber_match.average_speed_kmh', 30);
         $etaMinutes = ceil(($distanceKm / $averageSpeedKmh) * 60);
+
         return max(1, $etaMinutes);
     }
 

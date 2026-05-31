@@ -4,7 +4,6 @@ namespace App\Events;
 
 use App\Models\Booking;
 use App\Models\PlumberProfile;
-use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
@@ -24,7 +23,7 @@ class BookingBroadcast implements ShouldBroadcast
     {
         if ($this->plumber) {
             return [
-                new PrivateChannel('plumbers.' . $this->plumber->id),
+                new PrivateChannel('plumbers.'.$this->plumber->id),
             ];
         }
 
@@ -65,13 +64,14 @@ class BookingBroadcast implements ShouldBroadcast
 
     private function calculateEta(): int
     {
-        if (!$this->plumber || !$this->plumber->latitude || !$this->plumber->longitude) {
+        if (! $this->plumber || ! $this->plumber->latitude || ! $this->plumber->longitude) {
             return 15;
         }
 
         $distanceMeters = $this->plumber->pivot->distance_meters ?? 0;
         $distanceKm = $distanceMeters / 1000;
         $speedKmH = 30;
+
         return (int) ceil(($distanceKm / $speedKmH) * 60);
     }
 }

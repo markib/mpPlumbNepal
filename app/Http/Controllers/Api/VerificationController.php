@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\VerificationDocument;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class VerificationController extends Controller
 {
@@ -25,7 +24,7 @@ class VerificationController extends Controller
             'status' => 'pending',
         ]);
 
-        return response()->json([ 'document' => $document ], 201);
+        return response()->json(['document' => $document], 201);
     }
 
     public function submitForReview(Request $request)
@@ -37,14 +36,14 @@ class VerificationController extends Controller
 
         $user = $request->user();
         if ($user->role !== 'plumber') {
-            return response()->json([ 'message' => 'Only plumbers may submit verification' ], 403);
+            return response()->json(['message' => 'Only plumbers may submit verification'], 403);
         }
 
         $user->verification_status = 'submitted';
         $user->verification_notes = 'Awaiting admin review.';
         $user->save();
 
-        return response()->json([ 'message' => 'Verification workflow started' ]);
+        return response()->json(['message' => 'Verification workflow started']);
     }
 
     public function status(Request $request)

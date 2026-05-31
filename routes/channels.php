@@ -1,9 +1,9 @@
 <?php
 
 use App\Models\AiPipeline;
-use Illuminate\Support\Facades\Broadcast;
-use App\Models\User;
 use App\Models\Booking;
+use App\Models\User;
+use Illuminate\Support\Facades\Broadcast;
 use Illuminate\Support\Facades\Log;
 
 /*
@@ -20,7 +20,7 @@ Broadcast::channel('bookings.{bookingId}', function (User $user, $bookingId) {
     ]);
     $booking = Booking::find($bookingId);
 
-    if (!$booking) {
+    if (! $booking) {
         return false;
     }
 
@@ -131,13 +131,11 @@ Broadcast::channel('user.{userId}', function (User $user, $userId) {
     return (int) $user->id === (int) $userId;
 });
 
-
 Broadcast::channel('pipeline.{pipelineId}', function (
     User $user,
     $pipelineId
 ) {
 
-  
     $pipeline = AiPipeline::find($pipelineId);
 
     Log::info('Broadcasting auth request inside channels', [
@@ -146,7 +144,7 @@ Broadcast::channel('pipeline.{pipelineId}', function (
         'pipeline_user_id' => $pipeline?->user_id,
     ]);
 
-    if (!$pipeline) {
+    if (! $pipeline) {
         return false;
     }
 

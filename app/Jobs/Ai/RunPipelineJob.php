@@ -8,10 +8,10 @@ use App\Ai\Workflows\DiagnosisWorkflow;
 use App\Events\PipelineCompletedEvent;
 use App\Models\AiPipeline;
 use App\PipelineStatus;
+use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Log;
 
@@ -42,10 +42,10 @@ class RunPipelineJob implements ShouldQueue
                 $workflow->steps(),
                 $context
             );
-            Log::info('AI Pipeline executed successfully', [
-                'result' => $context->get('result'),
-                'pipeline_id' => $pipeline->id,
-            ]);
+            // Log::info('AI Pipeline executed successfully', [
+            //     'result' => $context->get('result'),
+            //     'pipeline_id' => $pipeline->id,
+            // ]);
             $pipeline->update([
                 'status' => PipelineStatus::COMPLETED,
                 'result' => $context->get('result'),
@@ -55,10 +55,10 @@ class RunPipelineJob implements ShouldQueue
                 pipelineId: $pipeline->id,
                 status: PipelineStatus::COMPLETED->value,
             ));
-            
-            Log::info('AI Pipeline completed', [
-                'pipeline_id' => $pipeline->id,
-            ]);
+
+            // Log::info('AI Pipeline completed', [
+            //     'pipeline_id' => $pipeline->id,
+            // ]);
         } catch (\Throwable $e) {
 
             $pipeline->update([

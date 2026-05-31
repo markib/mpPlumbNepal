@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\AiDiagnosis;
 use App\Models\Booking;
 use App\Models\PlumberProfile;
 use App\Models\ServiceType;
@@ -16,7 +17,7 @@ class AgentPermissionsTest extends TestCase
     {
         $customer = User::factory()->customer()->create();
         $serviceType = ServiceType::factory()->create();
-        $diagnosis = \App\Models\AiDiagnosis::factory()->create(['user_id' => $customer->id]);
+        $diagnosis = AiDiagnosis::factory()->create(['user_id' => $customer->id]);
         $booking = Booking::factory()->for($customer)->for($serviceType)->create([
             'ai_diagnosis_id' => $diagnosis->id,
         ]);

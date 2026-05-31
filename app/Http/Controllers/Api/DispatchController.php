@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Events\PlumberLocationUpdate;
 use App\Http\Controllers\Controller;
 use App\Jobs\ProcessBookingAcceptance;
 use App\Models\Booking;
 use App\Models\PlumberProfile;
 use App\Services\BookingBroadcastService;
 use App\Services\GeoSearchService;
+use App\Services\PlumberDispatchService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -15,57 +17,20 @@ class DispatchController extends Controller
 {
     public function findNearbyPlumbers(float $latitude, float $longitude, ?int $serviceTypeId = null, int $radius = 5000)
     {
-        if (DB::getDriverName() === 'pgsql') {
-            $point = sprintf('SRID=4326;POINT(%s %s)', $longitude, $latitude);
+        // Delegate to the PlumberDispatchService which runs the agent-backed search
+        $minRating = config('plumber_match.min_rating', 3.5);
 
-            return PlumberProfile::with('user')->selectRaw(
-                'plumber_profiles.*, ST_Distance(location, ST_GeogFromText(?)) AS distance_meters',
-                [$point]
-            )
-            ->where('is_available', true)
-            ->where('is_online', true)
-            ->where('verified', true)
-            ->whereHas('user', fn ($query) => $query->where('citizenship_verified', true))
-            ->when($serviceTypeId, function ($query, $serviceTypeId) {
-                $query->whereJsonContains('service_type_ids', $serviceTypeId);
-            })
-            ->whereRaw('ST_DWithin(location, ST_GeogFromText(?), ?)', [$point, $radius])
-            ->orderBy('distance_meters', 'asc')
-            ->limit(20)
-            ->get();
-        }
+        $plumbers = app(\App\Services\PlumberDispatchService::class)
+            ->findNearbyPlumbersUsingAgent(
+                $latitude,
+                $longitude,
+                $serviceTypeId,
+                $radius,
+                $minRating,
+                false
+            );
 
-        $plumbers = PlumberProfile::with('user')
-            ->where('is_available', true)
-            ->where('is_online', true)
-            ->where('verified', true)
-            ->whereHas('user', fn ($query) => $query->where('citizenship_verified', true))
-            ->when($serviceTypeId, function ($query, $serviceTypeId) {
-                $query->whereJsonContains('service_type_ids', $serviceTypeId);
-            })
-            ->get()
-            ->filter(fn ($profile) => isset($profile->latitude, $profile->longitude));
-
-        $distanceFromPoint = function ($profile) use ($latitude, $longitude) {
-            $latFrom = deg2rad($latitude);
-            $lonFrom = deg2rad($longitude);
-            $latTo = deg2rad($profile->latitude);
-            $lonTo = deg2rad($profile->longitude);
-            $latDelta = $latTo - $latFrom;
-            $lonDelta = $lonTo - $lonFrom;
-            $a = sin($latDelta / 2) ** 2 + cos($latFrom) * cos($latTo) * sin($lonDelta / 2) ** 2;
-            return 6371000 * 2 * asin(min(1, sqrt($a)));
-        };
-
-        return $plumbers
-            ->map(function ($profile) use ($distanceFromPoint) {
-                $profile->distance_meters = (int) round($distanceFromPoint($profile));
-                return $profile;
-            })
-            ->filter(fn ($profile) => $profile->distance_meters <= $radius)
-            ->sortBy('distance_meters')
-            ->take(20)
-            ->values();
+        return $plumbers;
     }
 
     public function search(Request $request)
@@ -85,7 +50,7 @@ class DispatchController extends Controller
             $radius
         );
 
-        return response()->json([ 'data' => $plumbers ]);
+        return response()->json(['data' => $plumbers]);
     }
 
     public function searchBooking(Request $request, Booking $booking)
@@ -95,7 +60,7 @@ class DispatchController extends Controller
         ]);
 
         if (! isset($booking->latitude) || ! isset($booking->longitude)) {
-            return response()->json([ 'message' => 'Booking does not contain location data' ], 422);
+            return response()->json(['message' => 'Booking does not contain location data'], 422);
         }
 
         $radius = $data['radius_meters'] ?? 5000;
@@ -106,14 +71,14 @@ class DispatchController extends Controller
             $radius
         );
 
-        return response()->json([ 'data' => $plumbers ]);
+        return response()->json(['data' => $plumbers]);
     }
 
     public function updateAvailability(Request $request)
     {
         $user = $request->user();
         if ($user->role !== 'plumber') {
-            return response()->json([ 'message' => 'Unauthorized' ], 403);
+            return response()->json(['message' => 'Unauthorized'], 403);
         }
 
         $data = $request->validate([
@@ -125,7 +90,7 @@ class DispatchController extends Controller
 
         $profile = $user->plumberProfile;
         if (! $profile) {
-            return response()->json([ 'message' => 'Plumber profile not found' ], 404);
+            return response()->json(['message' => 'Plumber profile not found'], 404);
         }
 
         $profile->is_available = $data['is_available'];
@@ -144,7 +109,7 @@ class DispatchController extends Controller
 
         return response()->json([
             'message' => 'Availability updated successfully',
-            'profile' => $profile
+            'profile' => $profile,
         ]);
     }
 
@@ -152,7 +117,7 @@ class DispatchController extends Controller
     {
         $user = $request->user();
         if ($user->role !== 'plumber') {
-            return response()->json([ 'message' => 'Unauthorized' ], 403);
+            return response()->json(['message' => 'Unauthorized'], 403);
         }
 
         $data = $request->validate([
@@ -165,7 +130,7 @@ class DispatchController extends Controller
 
         $profile = $user->plumberProfile;
         if (! $profile) {
-            return response()->json([ 'message' => 'Plumber profile not found' ], 404);
+            return response()->json(['message' => 'Plumber profile not found'], 404);
         }
 
         if (DB::getDriverName() === 'pgsql') {
@@ -186,7 +151,7 @@ class DispatchController extends Controller
             ->get();
 
         foreach ($activeBookings as $booking) {
-            broadcast(new \App\Events\PlumberLocationUpdate($booking, $profile, $data))->toOthers();
+            broadcast(new PlumberLocationUpdate($booking, $profile, $data))->toOthers();
         }
 
         return response()->json([
@@ -195,7 +160,7 @@ class DispatchController extends Controller
                 'latitude' => $data['latitude'],
                 'longitude' => $data['longitude'],
                 'updated_at' => $profile->last_location_update->toISOString(),
-            ]
+            ],
         ]);
     }
 
@@ -207,7 +172,7 @@ class DispatchController extends Controller
     |--------------------------------------------------------------------------
     */
 
-        if (!$booking->accepted_by_id) {
+        if (! $booking->accepted_by_id) {
             return response()->json([
                 'message' => 'No plumber assigned to this booking',
             ], 404);
@@ -221,7 +186,7 @@ class DispatchController extends Controller
 
         $plumber = $booking->acceptedBy;
 
-        if (!$plumber) {
+        if (! $plumber) {
             return response()->json([
                 'message' => 'Plumber not found',
             ], 404);
@@ -274,11 +239,11 @@ class DispatchController extends Controller
         }
 
         $plumber = $user->plumberProfile;
-        if (!$plumber) {
+        if (! $plumber) {
             return response()->json(['message' => 'Plumber profile not found'], 404);
         }
 
-        if (!$plumber->is_online || !$plumber->is_available) {
+        if (! $plumber->is_online || ! $plumber->is_available) {
             return response()->json(['message' => 'Plumber is not available'], 422);
         }
 
@@ -310,7 +275,7 @@ class DispatchController extends Controller
         }
 
         $plumber = $user->plumberProfile;
-        if (!$plumber) {
+        if (! $plumber) {
             return response()->json(['message' => 'Plumber profile not found'], 404);
         }
 
@@ -322,7 +287,7 @@ class DispatchController extends Controller
 
     public function getNearbyPlumbers(Request $request, Booking $booking, GeoSearchService $geoService)
     {
-        if (!$booking->latitude || !$booking->longitude) {
+        if (! $booking->latitude || ! $booking->longitude) {
             return response()->json(['message' => 'Booking does not contain location data'], 422);
         }
 
@@ -360,6 +325,60 @@ class DispatchController extends Controller
                 ];
             }),
             'count' => $plumbers->count(),
+        ]);
+    }
+
+    public function dispatchRecommendations(Request $request, Booking $booking, PlumberDispatchService $dispatchService)
+    {
+        if (! $booking->latitude || ! $booking->longitude) {
+            return response()->json(['message' => 'Booking does not contain location data'], 422);
+        }
+
+        $recommendations = $dispatchService->recommendForBooking($booking);
+
+        return response()->json([
+            'booking_id' => $booking->id,
+            'dispatch_recommendations' => $recommendations,
+            'message' => 'AI dispatch recommendations generated',
+        ]);
+    }
+
+    public function agentSearch(Request $request, PlumberDispatchService $dispatchService)
+    {
+        $data = $request->validate([
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
+            'service_type_id' => 'nullable|integer|exists:service_types,id',
+            'radius_km' => 'nullable|numeric|min:1|max:50',
+            'is_emergency' => 'nullable|boolean',
+            'min_rating' => 'nullable|numeric|min:1|max:5',
+        ]);
+
+        $radiusKm = $data['radius_km'] ?? config('plumber_match.search_radius_km', 15);
+        $minRating = $data['min_rating'] ?? config('plumber_match.min_rating', 3.5);
+        $isEmergency = $data['is_emergency'] ?? false;
+
+        $recommendations = $dispatchService->recommendForLocation(
+            $data['latitude'],
+            $data['longitude'],
+            $data['service_type_id'] ?? null,
+            $radiusKm,
+            $isEmergency,
+            $minRating
+        );
+
+        return response()->json([
+            'search_location' => [
+                'latitude' => $data['latitude'],
+                'longitude' => $data['longitude'],
+            ],
+            'search_params' => [
+                'radius_km' => $radiusKm,
+                'service_type_id' => $data['service_type_id'] ?? null,
+                'is_emergency' => $isEmergency,
+                'min_rating' => $minRating,
+            ],
+            'dispatch_recommendations' => $recommendations,
         ]);
     }
 }

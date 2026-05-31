@@ -3,41 +3,40 @@
 namespace App\Ai\Agents\Diagnosis;
 
 use Illuminate\Contracts\JsonSchema\JsonSchema;
-use Laravel\Ai\Attributes\Provider;
 use Laravel\Ai\Contracts\Agent;
 use Laravel\Ai\Contracts\Conversational;
 use Laravel\Ai\Contracts\HasStructuredOutput;
 use Laravel\Ai\Contracts\HasTools;
 use Laravel\Ai\Contracts\Tool;
-use Laravel\Ai\Enums\Lab;
 use Laravel\Ai\Messages\Message;
 use Laravel\Ai\Promptable;
 use Stringable;
-use Throwable;
-
 
 class PlumbingDiagnoser implements Agent, Conversational, HasStructuredOutput, HasTools
 {
     use Promptable;
 
     protected ?array $image = null;
+
     protected bool $hasImage = false;
 
     public function __construct(?array $image = null)
     {
         $this->image = $image;
-        $this->hasImage = !empty($image);
+        $this->hasImage = ! empty($image);
     }
+
     /**
      * Get the instructions that the agent should follow.
      */
     public function instructions(): Stringable|string
     {
-        $role = "You are an expert plumbing consultant and diagnostician for PlumbNepal in Nepal.";
+        $role = 'You are an expert plumbing consultant and diagnostician for PlumbNepal in Nepal.';
 
         $context = $this->hasImage
-            ? "The user has provided both a description and an image. Analyze both carefully. Use the image to confirm visible issues like leaks, corrosion, pipe type, or damage severity."
-            : "The user has provided only a text description. If the description lacks enough detail to give accurate pricing, lower the confidence and ask for more information in the summary.";
+            ? 'The user has provided both a description and an image. Analyze both carefully. Use the image to confirm visible issues like leaks, corrosion, pipe type, or damage severity.'
+            : 'The user has provided only a text description. If the description lacks enough detail to give accurate pricing, lower the confidence and ask for more information in the summary.';
+
         return <<<INSTRUCTIONS
 {$role}
 
@@ -94,9 +93,7 @@ INSTRUCTIONS;
             'recommended_service' => $schema->string(),
             'confidence' => $schema->number()->min(0)->max(1),
             'summary' => $schema->string(),
-            
+
         ];
     }
-
-  
 }

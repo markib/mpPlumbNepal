@@ -12,7 +12,7 @@ return [
             'options' => [
                 'cluster' => env('PUSHER_APP_CLUSTER'),
                 'useTLS' => env('PUSHER_SCHEME', 'https') === 'https',
-                'host' => env('PUSHER_HOST', 'api-' . env('PUSHER_APP_CLUSTER', 'ap2') . '.pusher.com'),
+                'host' => env('PUSHER_HOST', 'api-'.env('PUSHER_APP_CLUSTER', 'ap2').'.pusher.com'),
                 'port' => env('PUSHER_PORT', 443),
                 'scheme' => env('PUSHER_SCHEME', 'https'),
             ],
@@ -27,8 +27,8 @@ return [
             'secret' => env('REVERB_APP_SECRET'),
             'app_id' => env('REVERB_APP_ID'),
             'options' => [
-                'host'   => env('REVERB_HOST', '127.0.0.1'),
-                'port'   => env('REVERB_PORT', 8080),
+                'host' => env('REVERB_HOST', '127.0.0.1'),
+                'port' => env('REVERB_PORT', 8080),
                 'scheme' => env('REVERB_SCHEME', 'http'),
                 'useTLS' => env('REVERB_SCHEME') === 'https',
             ],
@@ -39,7 +39,7 @@ return [
                 'verify' => false, // Disables local SSL certificate checking errors
             ],
         ],
-        
+
         'log' => [
             'driver' => 'log',
         ],

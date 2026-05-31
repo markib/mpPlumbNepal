@@ -3,19 +3,18 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Events\NearbyBookingRequested;
-use App\Jobs\BroadcastBookingToPlumbers;
 use App\Models\Booking;
-use App\Models\ServiceType;
 use App\Models\PlumberProfile;
-use App\Services\PricingCalculator;
+use App\Models\ServiceType;
 use App\Services\BookingBroadcastService;
+use App\Services\PricingCalculator;
+use App\Services\PlumberDispatchService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class BookingController extends Controller
 {
-    public function createBooking(Request $request, PricingCalculator $pricing, BookingBroadcastService $broadcastService)
+    public function createBooking(Request $request, PricingCalculator $pricing, BookingBroadcastService $broadcastService, PlumberDispatchService $dispatchService)
     {
         $data = $request->validate([
             'service_type_id' => 'required|integer|exists:service_types,id',
@@ -63,13 +62,12 @@ class BookingController extends Controller
 
         $broadcastService->broadcastBooking($booking);
 
-        $nearbyPlumbers = (new DispatchController())->findNearbyPlumbers(
+        $nearbyPlumbers = $dispatchService->findNearbyPlumbersUsingAgent(
             $data['latitude'],
             $data['longitude'],
             $serviceType->id
         );
 
-       
         return response()->json([
             'booking' => $booking->load(['serviceType', 'user']),
             'pricing' => $pricingData,
@@ -100,7 +98,7 @@ class BookingController extends Controller
         $booking->status_id = $request->input('status_id');
         $booking->save();
 
-        return response()->json([ 'booking' => $booking ]);
+        return response()->json(['booking' => $booking]);
     }
 
     public function track(Booking $booking)

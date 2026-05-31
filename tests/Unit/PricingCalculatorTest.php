@@ -17,7 +17,7 @@ class PricingCalculatorTest extends TestCase
             'is_emergency_available' => true,
         ]);
 
-        $calculator = new PricingCalculator();
+        $calculator = new PricingCalculator;
         $result = $calculator->calculate(1.2, $serviceType->id, false);
 
         $this->assertEquals(350, $result['base_fee']);
@@ -36,7 +36,7 @@ class PricingCalculatorTest extends TestCase
             'is_emergency_available' => true,
         ]);
 
-        $calculator = new PricingCalculator();
+        $calculator = new PricingCalculator;
         $result = $calculator->calculate(4.3, $serviceType->id, true);
 
         $this->assertEquals(350, $result['base_fee']);

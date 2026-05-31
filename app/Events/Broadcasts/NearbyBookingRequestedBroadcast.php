@@ -4,9 +4,7 @@ namespace App\Events\Broadcasts;
 
 use App\Models\Booking;
 use App\Models\PlumberProfile;
-use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
@@ -30,7 +28,7 @@ class NearbyBookingRequestedBroadcast implements ShouldBroadcast
     public function broadcastOn(): array
     {
         return [
-            new PrivateChannel('plumbers.' . $this->plumber->id),
+            new PrivateChannel('plumbers.'.$this->plumber->id),
         ];
     }
 

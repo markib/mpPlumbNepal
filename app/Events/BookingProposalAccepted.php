@@ -23,9 +23,9 @@ class BookingProposalAccepted implements ShouldBroadcast
     public function broadcastOn(): array
     {
         return [
-            new PrivateChannel('bookings.' . $this->booking->id),
-            new PrivateChannel('user.' . $this->booking->user_id),
-            new PrivateChannel('plumbers.' . $this->proposal->plumber_profile_id),
+            new PrivateChannel('bookings.'.$this->booking->id),
+            new PrivateChannel('user.'.$this->booking->user_id),
+            new PrivateChannel('plumbers.'.$this->proposal->plumber_profile_id),
         ];
     }
 

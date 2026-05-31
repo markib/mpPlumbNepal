@@ -169,7 +169,7 @@ class BookingProposalController extends Controller
         $proposals = BookingProposal::with(['booking.serviceType', 'plumber.user'])
             ->whereHas('booking', function ($query) use ($user) {
                 $query->where('user_id', $user->id)
-                      ->where('workflow_status', 'proposed');
+                    ->where('workflow_status', 'proposed');
             })
             ->where('status', 'proposed')
             ->get()

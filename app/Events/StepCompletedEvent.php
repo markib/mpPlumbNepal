@@ -4,9 +4,7 @@ namespace App\Events;
 
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
@@ -27,7 +25,6 @@ class StepCompletedEvent implements ShouldBroadcastNow
         ]);
     }
 
-   
     /**
      * Get the channels the event should broadcast on.
      *
@@ -43,6 +40,7 @@ class StepCompletedEvent implements ShouldBroadcastNow
             new PrivateChannel("pipeline.{$this->pipelineId}"),
         ];
     }
+
     public function broadcastAs(): string
     {
         return 'pipeline.step.completed';
@@ -95,6 +93,4 @@ class StepCompletedEvent implements ShouldBroadcastNow
             'stepName' => $this->stepName,
         ];
     }
-}                                   
-
-
+}
