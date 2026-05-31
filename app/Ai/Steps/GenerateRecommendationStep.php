@@ -2,9 +2,9 @@
 
 namespace App\Ai\Steps;
 
-use App\Ai\Contracts\PipelineStep;
-use App\Ai\Context\PipelineContext;
 use App\Ai\Agents\Recommendation\RecommendationAgent;
+use App\Ai\Context\PipelineContext;
+use App\Ai\Contracts\PipelineStep;
 use App\Services\Ai\AgentRunner;
 use Illuminate\Support\Facades\Log;
 
@@ -13,28 +13,29 @@ class GenerateRecommendationStep implements PipelineStep
     public function __construct(
         protected AgentRunner $aiService
     ) {}
-    
+
     public function handle(PipelineContext $context): PipelineContext
     {
         // ✅ FIX: consistent key
         $analysis = $context->get('diagnosis');
 
-        if (!$analysis) {
+        if (! $analysis) {
             Log::error('Missing diagnosis in recommendation step');
+
             return $context;
         }
 
         try {
-            $response  = $this->aiService->run(
+            $response = $this->aiService->run(
                 RecommendationAgent::make(),
                 json_encode($analysis)
             );
-            
+
             // 🔥 NORMALIZE RESPONSE (VERY IMPORTANT)
             $data = $this->normalizeResponse($response);
 
             Log::info('Recommendation Step Output', [
-                'recommendation' => $data
+                'recommendation' => $data,
             ]);
 
             // 👉 Store normalized recommendation separately

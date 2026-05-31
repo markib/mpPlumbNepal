@@ -27,11 +27,11 @@ class PlumberProfileFactory extends Factory
             'rating' => 4.5,
         ];
 
+        $attributes['latitude'] = 27.7172;
+        $attributes['longitude'] = 85.3240;
+
         if (DB::getDriverName() === 'pgsql') {
             $attributes['location'] = DB::raw("ST_GeogFromText('SRID=4326;POINT(85.3240 27.7172)')");
-        } else {
-            $attributes['latitude'] = 27.7172;
-            $attributes['longitude'] = 85.3240;
         }
 
         return $attributes;

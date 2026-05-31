@@ -2,12 +2,11 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class PlumberProfile extends Model
@@ -75,9 +74,10 @@ class PlumberProfile extends Model
     {
         if (config('database.default') === 'pgsql') {
             $point = sprintf('SRID=4326;POINT(%s %s)', $longitude, $latitude);
+
             return $query
-                ->whereRaw("ST_DWithin(location, ST_GeogFromText(?), ?)", [$point, $radiusKm * 1000])
-                ->selectRaw("plumber_profiles.*, ST_Distance(location, ST_GeogFromText(?)) AS distance_meters", [$point]);
+                ->whereRaw('ST_DWithin(location, ST_GeogFromText(?), ?)', [$point, $radiusKm * 1000])
+                ->selectRaw('plumber_profiles.*, ST_Distance(location, ST_GeogFromText(?)) AS distance_meters', [$point]);
         }
 
         return $query;

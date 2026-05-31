@@ -2,10 +2,10 @@
 
 namespace Tests;
 
+use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Http\Request;
-
 
 abstract class TestCase extends BaseTestCase
 {
@@ -14,14 +14,15 @@ abstract class TestCase extends BaseTestCase
     protected function setUp(): void
     {
         parent::setUp();
-        
+
     }
 
     public function createApplication()
     {
         $app = require __DIR__.'/../bootstrap/app.php';
         $app->instance('request', Request::create('http://localhost/'));
-        $app->make(\Illuminate\Contracts\Http\Kernel::class)->bootstrap();
+        $app->make(Kernel::class)->bootstrap();
+
         return $app;
     }
 }

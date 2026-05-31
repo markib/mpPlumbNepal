@@ -60,6 +60,6 @@ class PaymentController extends Controller
 
         Log::info('Payment callback received', $request->all());
 
-        return response()->json([ 'payment' => $payment ]);
+        return response()->json(['payment' => $payment]);
     }
 }

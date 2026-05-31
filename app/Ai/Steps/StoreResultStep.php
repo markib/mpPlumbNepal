@@ -10,6 +10,27 @@ class StoreResultStep implements PipelineStep
 {
     public function handle(PipelineContext $context): PipelineContext
     {
+        // Check if this is a dispatch workflow
+        $dispatchRecommendations = $context->get('dispatch_recommendations');
+        if (! empty($dispatchRecommendations)) {
+            // For dispatch workflow, store dispatch recommendations as result
+            $result = [
+                'type' => 'dispatch',
+                'recommendations' => $dispatchRecommendations['recommendations'] ?? [],
+                'confidence' => $dispatchRecommendations['confidence'] ?? 0,
+                'summary' => $dispatchRecommendations['summary'] ?? '',
+                'alternative_notes' => $dispatchRecommendations['alternative_notes'] ?? '',
+            ];
+            $context->set('result', $result);
+
+            Log::info('AI StoreResultStep completed - Dispatch workflow', [
+                'recommendations_count' => count($result['recommendations']),
+            ]);
+
+            return $context;
+        }
+
+        // Original diagnosis workflow logic
         // Get previous outputs from context
         $diagnosis = $context->get('diagnosis', []);
         $recommendation = $context->get('recommendation', []);
@@ -33,57 +54,56 @@ class StoreResultStep implements PipelineStep
         // ENHANCEMENT = RECOMMENDATION
         // ===============================
 
-        if (!empty($recommendation['recommended_service'])) {
+        if (! empty($recommendation['recommended_service'])) {
             $result['recommended_service'] = $recommendation['recommended_service'];
         } else {
             $result['recommended_service'] = $diagnosis['recommended_service']
                 ?? 'Not Available';
         }
 
-        if (!empty($recommendation['summary'])) {
+        if (! empty($recommendation['summary'])) {
             $result['summary'] = $recommendation['summary'];
         }
 
-        if (!empty($recommendation['urgency'])) {
+        if (! empty($recommendation['urgency'])) {
             $result['urgency'] = $recommendation['urgency'];
         }
 
-        if(!empty($recommendation['customer_explanation'])) {
+        if (! empty($recommendation['customer_explanation'])) {
             $result['customer_explanation'] = $recommendation['customer_explanation'];
         }
-        if(!empty($recommendation['likely_cause'])) {
+        if (! empty($recommendation['likely_cause'])) {
             $result['likely_cause'] = $recommendation['likely_cause'];
         }
-        if(!empty($recommendation['risk_level'])) {
+        if (! empty($recommendation['risk_level'])) {
             $result['risk_level'] = $recommendation['risk_level'];
         }
-        if(!empty($recommendation['immediate_actions'])) {
+        if (! empty($recommendation['immediate_actions'])) {
             $result['immediate_actions'] = $recommendation['immediate_actions'];
         }
-        if(!empty($recommendation['diy_checks'])) {
+        if (! empty($recommendation['diy_checks'])) {
             $result['diy_checks'] = $recommendation['diy_checks'];
         }
-        if(!empty($recommendation['required_tools'])) {
+        if (! empty($recommendation['required_tools'])) {
             $result['required_tools'] = $recommendation['required_tools'];
         }
-        if(!empty($recommendation['professional_steps'])) {
+        if (! empty($recommendation['professional_steps'])) {
             $result['professional_steps'] = $recommendation['professional_steps'];
         }
-        if(!empty($recommendation['safety_precautions'])) {
+        if (! empty($recommendation['safety_precautions'])) {
             $result['safety_precautions'] = $recommendation['safety_precautions'];
         }
-        if(!empty($recommendation['preventive_maintenance'])) { 
+        if (! empty($recommendation['preventive_maintenance'])) {
             $result['preventive_maintenance'] = $recommendation['preventive_maintenance'];
-        }   
+        }
         // ===============================
         // STORE
         // ===============================
         $context->set('result', $result);
 
-        Log::info('AI StoreResultStep completed', [
+        Log::info('AI StoreResultStep completed - Diagnosis workflow', [
             'result' => $result,
         ]);
-
 
         return $context;
     }

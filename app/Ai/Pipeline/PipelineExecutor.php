@@ -17,11 +17,11 @@ class PipelineExecutor
             $step = app($stepClass);
 
             $context = $step->handle($context);
-            
+
             event(new StepCompletedEvent(
                 pipelineId: $context->get('pipeline_id'),
                 stepName: class_basename($stepClass),
-               
+
             ));
         }
 

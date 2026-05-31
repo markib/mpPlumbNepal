@@ -111,3 +111,18 @@ export const getPipelineResult = async (
 
     return json;
 };
+
+/**
+ * Convenience helper to start an AI pipeline and wait for its result.
+ */
+export const diagnoseIssue = async (message: string) => {
+    const start = await startPipeline(message);
+
+    if (!start || !start.pipeline_id) {
+        throw new Error('Failed to start AI pipeline');
+    }
+
+    const result = await pollPipelineResult(start.pipeline_id);
+
+    return result as AiDiagnosisResult;
+};

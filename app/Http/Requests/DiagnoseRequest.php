@@ -28,4 +28,3 @@ class DiagnoseRequest extends FormRequest
         ];
     }
 }
-

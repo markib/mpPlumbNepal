@@ -14,7 +14,7 @@ class AiStorageServiceTest extends TestCase
         $user = User::factory()->customer()->create();
         Sanctum::actingAs($user);
 
-        $diagnosis = (new AiStorageService())->saveResult([
+        $diagnosis = (new AiStorageService)->saveResult([
             'issue_type' => 'drain_blockage',
             'urgency' => 'medium',
             'price_min' => 700,

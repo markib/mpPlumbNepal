@@ -10,7 +10,7 @@ class PlumbingDiagnoserAgentTest extends TestCase
 {
     public function test_instructions_handle_text_only_diagnosis_context(): void
     {
-        $instructions = (string) (new PlumbingDiagnoser())->instructions();
+        $instructions = (string) (new PlumbingDiagnoser)->instructions();
 
         $this->assertStringContainsString('PlumbNepal in Nepal', $instructions);
         $this->assertStringContainsString('only a text description', $instructions);
@@ -27,7 +27,7 @@ class PlumbingDiagnoserAgentTest extends TestCase
 
     public function test_schema_requires_expected_structured_diagnosis_fields(): void
     {
-        $schema = (new PlumbingDiagnoser())->schema(new JsonSchemaTypeFactory());
+        $schema = (new PlumbingDiagnoser)->schema(new JsonSchemaTypeFactory);
 
         $this->assertSame([
             'issue_type',
@@ -48,7 +48,7 @@ class PlumbingDiagnoserAgentTest extends TestCase
 
     public function test_agent_has_no_side_effect_tools_or_conversation_history_by_default(): void
     {
-        $agent = new PlumbingDiagnoser();
+        $agent = new PlumbingDiagnoser;
 
         $this->assertSame([], iterator_to_array($agent->tools()));
         $this->assertSame([], iterator_to_array($agent->messages()));

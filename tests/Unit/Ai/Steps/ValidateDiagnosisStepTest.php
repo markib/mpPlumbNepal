@@ -12,7 +12,7 @@ class ValidateDiagnosisStepTest extends TestCase
     public function test_it_validates_and_normalizes_diagnosis(): void
     {
         $step = new ValidateDiagnosisStep(
-            new DiagnosisValidator()
+            new DiagnosisValidator
         );
 
         $context = new PipelineContext([

@@ -24,7 +24,7 @@ class ExpireBookingBroadcast implements ShouldQueue
             ->get();
 
         foreach ($expiredBookings as $booking) {
-            if (!$booking->accepted_by_id) {
+            if (! $booking->accepted_by_id) {
                 Log::info("Expiring broadcast for booking {$booking->id}");
                 $broadcastService->expireBroadcast($booking);
             } else {

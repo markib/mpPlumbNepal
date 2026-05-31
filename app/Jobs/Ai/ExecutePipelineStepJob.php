@@ -22,7 +22,7 @@ class ExecutePipelineStepJob implements ShouldQueue
 
     public function handle(): void
     {
-        if (!isset($this->steps[$this->stepIndex])) {
+        if (! isset($this->steps[$this->stepIndex])) {
 
             StorePipelineResultJob::dispatch(
                 $this->pipelineId,
@@ -43,10 +43,10 @@ class ExecutePipelineStepJob implements ShouldQueue
 
             $duration = microtime(true) - $start;
 
-            Log::info("Step executed", [
+            Log::info('Step executed', [
                 'step' => $stepClass,
                 'pipeline_id' => $this->pipelineId,
-                'duration' => $duration
+                'duration' => $duration,
             ]);
 
             // next step
@@ -58,9 +58,9 @@ class ExecutePipelineStepJob implements ShouldQueue
             );
         } catch (\Throwable $e) {
 
-            Log::error("Pipeline step failed", [
+            Log::error('Pipeline step failed', [
                 'step' => $stepClass,
-                'error' => $e->getMessage()
+                'error' => $e->getMessage(),
             ]);
 
             RetryPipelineStepJob::dispatch(

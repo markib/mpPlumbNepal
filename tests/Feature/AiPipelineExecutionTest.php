@@ -31,7 +31,7 @@ class AiPipelineExecutionTest extends TestCase
                     'issue_type' => 'pipe_leak',
                     'confidence' => 0.9,
                     'urgency' => 'medium',
-                    'summary' => 'Mocked AI response'
+                    'summary' => 'Mocked AI response',
                 ]);
         });
         // 3. Create your data models
@@ -52,7 +52,6 @@ class AiPipelineExecutionTest extends TestCase
             'image' => null,
         ]);
 
-  
         // 4. Run execution
         $executor = $this->app->make(PipelineExecutor::class);
         $workflow = $this->app->make(DiagnosisWorkflow::class);
@@ -61,7 +60,6 @@ class AiPipelineExecutionTest extends TestCase
             $workflow->steps(),
             $context
         );
-        
 
         // 5. Assertions will now pass instantly (< 50ms) instead of taking 1 minute!
         $this->assertArrayHasKey('diagnosis', $result->data);

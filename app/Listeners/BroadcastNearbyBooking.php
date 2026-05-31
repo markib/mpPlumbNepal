@@ -2,9 +2,6 @@
 
 namespace App\Listeners;
 
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
-use App\Events\NearbyBookingRequested;
 use App\Events\Broadcasts\NearbyBookingRequestedBroadcast;
 
 class BroadcastNearbyBooking

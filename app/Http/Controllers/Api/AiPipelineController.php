@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\AiPipeline;
 use App\PipelineStatus;
 use App\Services\AI\AiPipelineService;
-use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class AiPipelineController extends Controller
 {

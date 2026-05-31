@@ -3,7 +3,6 @@
 namespace App\Events;
 
 use App\Models\PlumberProfile;
-use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
@@ -22,7 +21,7 @@ class PlumberLocationUpdated implements ShouldBroadcast
     public function broadcastOn(): array
     {
         return [
-            new PrivateChannel('plumbers.' . $this->plumber->id . '.location'),
+            new PrivateChannel('plumbers.'.$this->plumber->id.'.location'),
         ];
     }
 

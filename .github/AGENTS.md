@@ -38,3 +38,12 @@ PlumbNepal is an on-demand plumbing marketplace designed for the Nepalese market
 
 ### Booking Lifecycle
 - Pending -> Accepted -> En Route -> Job Started -> Completed.
+
+Before marking any task complete, run:
+
+composer quality
+
+Code is not complete unless:
+- Pint passes
+- PHPStan passes
+- Tests pass

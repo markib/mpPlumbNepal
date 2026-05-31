@@ -1,17 +1,18 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
-use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\Api\DispatchController;
-use App\Http\Controllers\Api\BookingController;
-use App\Http\Controllers\Api\BookingProposalController;
-use App\Http\Controllers\Api\ServiceTypeController;
-use App\Http\Controllers\Api\VerificationController;
-use App\Http\Controllers\Api\PaymentController;
 use App\Http\Controllers\Api\AiController;
 use App\Http\Controllers\Api\AiPipelineController;
+use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\BookingController;
+use App\Http\Controllers\Api\BookingProposalController;
+use App\Http\Controllers\Api\DispatchController;
+use App\Http\Controllers\Api\PaymentController;
+use App\Http\Controllers\Api\ServiceTypeController;
+use App\Http\Controllers\Api\VerificationController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Broadcast;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {
 
@@ -27,8 +28,6 @@ Route::prefix('v1')->group(function () {
     Route::get('service-types', [ServiceTypeController::class, 'index']);
 
     Route::post('bookings', [BookingController::class, 'createBooking']);
-
-   
 
     /*
     |--------------------------------------------------------------------------
@@ -79,6 +78,16 @@ Route::prefix('v1')->group(function () {
         Route::post(
             'dispatch/location',
             [DispatchController::class, 'updateLocation']
+        );
+
+        Route::post(
+            'dispatch/agent-search',
+            [DispatchController::class, 'agentSearch']
+        );
+
+        Route::get(
+            'bookings/{booking}/dispatch-recommendations',
+            [DispatchController::class, 'dispatchRecommendations']
         );
 
         /*
@@ -219,11 +228,11 @@ Route::prefix('v1')->group(function () {
         |--------------------------------------------------------------------------
         | BROADCASTING AUTHENTICATION
         |--------------------------------------------------------------------------
-        | Placing this inside the Sanctum group ensures that incoming Echo requests 
+        | Placing this inside the Sanctum group ensures that incoming Echo requests
         | inherit the authentication guard context seamlessly.
         */
-        Route::post('broadcasting/auth', function (\Illuminate\Http\Request $request) {
-            \Illuminate\Support\Facades\Log::info('Broadcasting auth request', [
+        Route::post('broadcasting/auth', function (Request $request) {
+            Log::info('Broadcasting auth request', [
                 'user_id' => $request->user()?->id,
                 'role' => $request->user()?->role,
                 'channel_name' => $request->input('channel_name'),
@@ -235,11 +244,9 @@ Route::prefix('v1')->group(function () {
 
         Route::post('/pipeline/start', [
             AiPipelineController::class,
-            'start'
+            'start',
         ]);
         Route::get('/pipeline/{pipelineId}', [AiPipelineController::class, 'show']);
     });
 
-
 });
-

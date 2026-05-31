@@ -4,7 +4,6 @@ namespace App\Events;
 
 use App\Models\Booking;
 use App\Models\PlumberProfile;
-use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
@@ -23,8 +22,8 @@ class BookingAccepted implements ShouldBroadcast
     public function broadcastOn(): array
     {
         return [
-            new PrivateChannel('bookings.' . $this->booking->id),
-            new PrivateChannel('plumbers.' . $this->plumber->id),
+            new PrivateChannel('bookings.'.$this->booking->id),
+            new PrivateChannel('plumbers.'.$this->plumber->id),
         ];
     }
 

@@ -1,14 +1,13 @@
 <?php
-// config/ai.php
 
-use App\Providers\CustomOllamaProvider;
+// config/ai.php
 
 return [
     'default' => env('AI_DEFAULT_PROVIDER', 'gemini'),
 
     'priority' => [
         'gemini',
-        'ollama' 
+        'ollama',
     ],
 
     /*
@@ -28,25 +27,25 @@ return [
     'providers' => [
         // Ollama (Local AI)
         'ollama' => [
-            'driver'   => 'ollama',
-            'key'      => env('OLLAMA_API_KEY', 'ollama'),   // dummy key required by SDK
+            'driver' => 'ollama',
+            'key' => env('OLLAMA_API_KEY', 'ollama'),   // dummy key required by SDK
             'base_url' => env('OLLAMA_BASE_URL', 'http://127.0.0.1:11434'),
-            'models'    => [
+            'models' => [
                 'text' => [
                     'default' => 'qwen2.5-coder:1.5b',
                     'cheapest' => 'gemma2:2b',
                 ],
             ],
-            'timeout'  => env('OLLAMA_TIMEOUT', 180),        // longer timeout for local
+            'timeout' => env('OLLAMA_TIMEOUT', 180),        // longer timeout for local
         ],
 
         'gemini' => [
-            'driver'   => 'gemini',
-            'key'      => env('GEMINI_API_KEY'),
-            'api_key'  => env('GEMINI_API_KEY'),
+            'driver' => 'gemini',
+            'key' => env('GEMINI_API_KEY'),
+            'api_key' => env('GEMINI_API_KEY'),
             'base_url' => env('GEMINI_BASE_URL', 'https://generativelanguage.googleapis.com/v1beta'),
-            'model'    => env('GEMINI_MODEL', 'gemini-2.5-flash'),
-            'timeout'  => env('GEMINI_TIMEOUT', 60),
+            'model' => env('GEMINI_MODEL', 'gemini-2.5-flash'),
+            'timeout' => env('GEMINI_TIMEOUT', 60),
         ],
 
         // 'nvidia' => [
@@ -57,5 +56,5 @@ return [
         //     'model'    => env('NVIDIA_MODEL', 'mistralai/mistral-medium-3.5-128b'),
         //     'timeout'  => env('NVIDIA_TIMEOUT', 60),
         // ],
-    ]
+    ],
 ];

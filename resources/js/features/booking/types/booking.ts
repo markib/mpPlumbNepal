@@ -31,7 +31,7 @@ export interface NearbyPlumber {
     socket_id?: string | null;
     skills?: string[];
 
-    user?: {
+    user: {
         name?: string;
         phone?: string;
     };

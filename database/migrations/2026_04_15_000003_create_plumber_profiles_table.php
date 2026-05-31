@@ -25,8 +25,12 @@ return new class extends Migration
         if (DB::getDriverName() === 'pgsql') {
             DB::statement('ALTER TABLE plumber_profiles ADD COLUMN location geography(POINT,4326)');
             DB::statement('CREATE INDEX plumber_profiles_location_gix ON plumber_profiles USING GIST(location)');
+
+            Schema::table('plumber_profiles', function (Blueprint $table) {
+                $table->decimal('latitude', 10, 8)->nullable();
+                $table->decimal('longitude', 11, 8)->nullable();
+            });
         } else {
-            // For SQLite and other databases, use regular columns
             Schema::table('plumber_profiles', function (Blueprint $table) {
                 $table->decimal('latitude', 10, 8)->nullable();
                 $table->decimal('longitude', 11, 8)->nullable();

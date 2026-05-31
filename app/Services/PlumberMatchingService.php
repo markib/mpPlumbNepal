@@ -29,7 +29,7 @@ class PlumberMatchingService
         ];
 
         if ($booking->latitude && $booking->longitude) {
-            $geoService = new GeoSearchService();
+            $geoService = new GeoSearchService;
             $plumbers = $geoService->findNearbyPlumbers(
                 $booking->latitude,
                 $booking->longitude,
@@ -69,7 +69,7 @@ class PlumberMatchingService
         $bookingSkills = $booking->serviceType?->skills->pluck('id')->toArray() ?? [];
         $plumberSkills = $plumber->skills->pluck('id')->toArray() ?? [];
 
-        if (!empty($bookingSkills) && !empty($plumberSkills)) {
+        if (! empty($bookingSkills) && ! empty($plumberSkills)) {
             $matchingSkills = array_intersect($bookingSkills, $plumberSkills);
             $skillMatchScore = count($matchingSkills) / count($bookingSkills);
         }
@@ -93,15 +93,17 @@ class PlumberMatchingService
                     $plumber->longitude
                 );
             $plumber->match_score = $this->calculateMatchScore($plumber, $booking, $distanceKm);
+
             return $plumber;
         })
-        ->sortByDesc('match_score')
-        ->values();
+            ->sortByDesc('match_score')
+            ->values();
     }
 
     private function calculateDistance(float $lat1, float $lng1, float $lat2, float $lng2): float
     {
-        $geoService = new GeoSearchService();
+        $geoService = new GeoSearchService;
+
         return $geoService->calculateDistance($lat1, $lng1, $lat2, $lng2);
     }
 

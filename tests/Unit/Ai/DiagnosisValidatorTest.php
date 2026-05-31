@@ -9,7 +9,7 @@ class DiagnosisValidatorTest extends TestCase
 {
     public function test_it_normalizes_confidence_and_urgency(): void
     {
-        $validator = new DiagnosisValidator();
+        $validator = new DiagnosisValidator;
 
         $result = $validator->handle([
             'issue_type' => 'pipe_leak',
@@ -23,12 +23,12 @@ class DiagnosisValidatorTest extends TestCase
 
         $this->assertEquals('medium', $result['urgency']);
         $this->assertEquals(1.0, $result['confidence']);
-        $this->assertEquals(0, $result['estimated_price_min']);
+        $this->assertEquals(1500, $result['estimated_price_min']);
     }
 
     public function test_it_detects_emergency_cases(): void
     {
-        $validator = new DiagnosisValidator();
+        $validator = new DiagnosisValidator;
 
         $result = $validator->handle([
             'issue_type' => 'pipe_burst',

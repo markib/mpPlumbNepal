@@ -6,7 +6,7 @@ interface PlumberProfile {
     is_online?: boolean;
     distance_text?: string;
     eta_minutes?: number;
-    user: {
+    user?: {
         name?: string;
         phone?: string;
     };

@@ -2,14 +2,17 @@
 
 namespace App\Providers;
 
+use App\Events\NearbyBookingRequested;
+use App\Listeners\BroadcastNearbyBooking;
+use App\Listeners\BroadcastStepListener;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
 class EventServiceProvider extends ServiceProvider
 {
     protected $listen = [
-        \App\Events\NearbyBookingRequested::class => [
-            \App\Listeners\BroadcastNearbyBooking::class,
-            \App\Listeners\BroadcastStepListener::class,
+        NearbyBookingRequested::class => [
+            BroadcastNearbyBooking::class,
+            BroadcastStepListener::class,
         ],
     ];
 
