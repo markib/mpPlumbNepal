@@ -23,7 +23,7 @@ class BookingBroadcast implements ShouldBroadcast
     {
         if ($this->plumber) {
             return [
-                new PrivateChannel('plumbers.'.$this->plumber->id),
+                new PrivateChannel('plumbers.' . $this->plumber->id),
             ];
         }
 

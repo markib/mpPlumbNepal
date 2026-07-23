@@ -18,7 +18,7 @@ class BroadcastingAuthTest extends TestCase
 
         $response = $this->postJson('/api/v1/broadcasting/auth', [
             'socket_id' => '1234.5678',
-            'channel_name' => 'private-plumbers.'.$profile->id,
+            'channel_name' => 'private-plumbers.' . $profile->id,
         ]);
 
         $response->assertOk()
@@ -34,7 +34,7 @@ class BroadcastingAuthTest extends TestCase
 
         $response = $this->post('/api/v1/broadcasting/auth', [
             'socket_id' => '1234.5678',
-            'channel_name' => 'private-plumbers.'.$profile->id,
+            'channel_name' => 'private-plumbers.' . $profile->id,
         ], [
             'Accept' => 'application/json',
         ]);
@@ -51,7 +51,7 @@ class BroadcastingAuthTest extends TestCase
 
         $response = $this->postJson('/api/v1/broadcasting/auth', [
             'socket_id' => '1234.5678',
-            'channel_name' => 'private-user.'.$customer->id,
+            'channel_name' => 'private-user.' . $customer->id,
         ]);
 
         $response->assertOk()

@@ -6,7 +6,6 @@ use App\Ai\Context\PipelineContext;
 use App\Ai\Pipeline\PipelineExecutor;
 use App\Ai\Workflows\DispatchWorkflow;
 use App\Models\Booking;
-use App\Services\GeoSearchService;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
 
@@ -64,7 +63,7 @@ class PlumberDispatchService
     /**
      * Run the dispatch AI pipeline.
      *
-     * @param array<string, mixed> $bookingContext
+     * @param  array<string, mixed>  $bookingContext
      * @return array<string, mixed>
      */
     private function runDispatchPipeline(array $bookingContext): array
@@ -106,7 +105,7 @@ class PlumberDispatchService
     /**
      * Normalize and enrich recommendations for API response.
      *
-     * @param array<string, mixed> $recommendations
+     * @param  array<string, mixed>  $recommendations
      * @return array<string, mixed>
      */
     private function normalizeRecommendations(array $recommendations): array
@@ -151,7 +150,7 @@ class PlumberDispatchService
      *
      * This returns a Collection of plain arrays (not Eloquent models).
      *
-     * @return \Illuminate\Support\Collection<int, array{
+     * @return Collection<int, array{
      *     id: mixed,
      *     name: mixed,
      *     rating: mixed,
@@ -188,7 +187,7 @@ class PlumberDispatchService
         /** @var array<int, array<string, mixed>> $recs */
         $recs = $result['recommendations'] ?? [];
 
-        /** @var \Illuminate\Support\Collection<int, array{
+        /** @var Collection<int, array{
          *     id: mixed,
          *     name: mixed,
          *     rating: mixed,
@@ -235,7 +234,7 @@ class PlumberDispatchService
     }
 
     /**
-     * @return \Illuminate\Support\Collection<int, array{
+     * @return Collection<int, array{
      *     id: mixed,
      *     name: mixed,
      *     rating: mixed,
@@ -268,7 +267,7 @@ class PlumberDispatchService
             $filters['service_type_ids'] = [$serviceTypeId];
         }
 
-        /** @var \Illuminate\Support\Collection<int, array{
+        /** @var Collection<int, array{
          *     id: mixed,
          *     name: mixed,
          *     rating: mixed,

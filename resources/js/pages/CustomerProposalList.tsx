@@ -75,6 +75,8 @@ const CustomerProposalList: React.FC = () => {
   const [success, setSuccess] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [creatingRequest, setCreatingRequest] = useState(false);
+  const [selectedIds, setSelectedIds] = useState<Set<number>>(new Set());
+  const [showCompare, setShowCompare] = useState(false);
 
   const refreshData = async () => {
     const [proposalResponse, jobOrderResponse, pendingResponse] = await Promise.all([
@@ -264,6 +266,17 @@ const CustomerProposalList: React.FC = () => {
   const activeJobOrders = jobOrders.filter((order) => order.workflow_status !== 'completed');
   const completedJobOrders = jobOrders.filter((order) => order.workflow_status === 'completed');
   const hasContent = proposals.length > 0 || jobOrders.length > 0 || pendingRequests.length > 0;
+
+  const toggleCompare = (id: number) => {
+    setSelectedIds(prev => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  };
+
+  const comparedProposals = proposals.filter(p => selectedIds.has(p.id));
 
   const refreshCustomerOffers = async () => {
     setLoading(true);
@@ -463,38 +476,188 @@ const CustomerProposalList: React.FC = () => {
       )}
 
       <div className="rounded-xl bg-white p-6 shadow-sm">
-        <h2 className="text-xl font-semibold">Deal Offers</h2>
+        <div className="flex items-center justify-between">
+          <div>
+            <h2 className="text-xl font-semibold">Deal Offers</h2>
             <p className="mt-2 text-sm text-slate-600">Review ranked plumber quotes by rating, distance, ETA, price, and skill match.</p>
+          </div>
+          {proposals.length > 1 && (
+            <div className="flex gap-2">
+              {selectedIds.size >= 2 && !showCompare && (
+                <button
+                  type="button"
+                  onClick={() => setShowCompare(true)}
+                  className="rounded bg-cyan-600 px-4 py-2 text-sm font-medium text-white hover:bg-cyan-700"
+                >
+                  Compare {selectedIds.size} proposals
+                </button>
+              )}
+              {showCompare && (
+                <button
+                  type="button"
+                  onClick={() => { setShowCompare(false); setSelectedIds(new Set()); }}
+                  className="rounded bg-slate-200 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-300"
+                >
+                  Exit comparison
+                </button>
+              )}
+            </div>
+          )}
+        </div>
+
+        {showCompare && comparedProposals.length >= 2 && (
+          <div className="mt-6 overflow-x-auto rounded-xl border border-slate-200">
+            <table className="w-full min-w-[600px] text-sm">
+              <thead>
+                <tr className="border-b border-slate-200 bg-slate-50">
+                  <th className="p-3 text-left font-medium text-slate-500">Metric</th>
+                  {comparedProposals.map(p => (
+                    <th key={p.id} className="p-3 text-left font-semibold text-slate-900">
+                      {p.plumber.user.name}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100">
+                <tr className="hover:bg-slate-50/50">
+                  <td className="p-3 font-medium text-slate-500">Rating</td>
+                  {comparedProposals.map(p => (
+                    <td key={p.id} className="p-3">
+                      <span className="inline-flex items-center gap-1">
+                        {p.plumber.rating?.toFixed(1) ?? 'N/A'}
+                        <span className="text-amber-400">★</span>
+                      </span>
+                    </td>
+                  ))}
+                </tr>
+                <tr className="hover:bg-slate-50/50">
+                  <td className="p-3 font-medium text-slate-500">Base Fee</td>
+                  {comparedProposals.map(p => (
+                    <td key={p.id} className={`p-3 font-semibold ${p.base_fee === Math.min(...comparedProposals.map(x => x.base_fee)) ? 'text-emerald-700' : ''}`}>
+                      Rs {p.base_fee}
+                    </td>
+                  ))}
+                </tr>
+                <tr className="hover:bg-slate-50/50">
+                  <td className="p-3 font-medium text-slate-500">Material Cost</td>
+                  {comparedProposals.map(p => (
+                    <td key={p.id} className={`p-3 font-semibold ${p.material_cost === Math.min(...comparedProposals.map(x => x.material_cost)) ? 'text-emerald-700' : ''}`}>
+                      Rs {p.material_cost}
+                    </td>
+                  ))}
+                </tr>
+                <tr className="hover:bg-slate-50/50">
+                  <td className="p-3 font-medium text-slate-500">Total</td>
+                  {comparedProposals.map(p => (
+                    <td key={p.id} className={`p-3 text-lg font-bold ${p.total_cost === Math.min(...comparedProposals.map(x => x.total_cost)) ? 'text-emerald-700' : 'text-slate-900'}`}>
+                      Rs {p.total_cost}
+                    </td>
+                  ))}
+                </tr>
+                <tr className="hover:bg-slate-50/50">
+                  <td className="p-3 font-medium text-slate-500">ETA</td>
+                  {comparedProposals.map(p => (
+                    <td key={p.id} className={`p-3 font-semibold ${p.eta_minutes === Math.min(...comparedProposals.map(x => x.eta_minutes)) ? 'text-emerald-700' : ''}`}>
+                      {p.eta_minutes} min
+                    </td>
+                  ))}
+                </tr>
+                <tr className="hover:bg-slate-50/50">
+                  <td className="p-3 font-medium text-slate-500">Distance</td>
+                  {comparedProposals.map(p => (
+                    <td key={p.id} className="p-3">
+                      {p.distance_meters ? `${(p.distance_meters / 1000).toFixed(1)} km` : 'N/A'}
+                    </td>
+                  ))}
+                </tr>
+                <tr className="hover:bg-slate-50/50">
+                  <td className="p-3 font-medium text-slate-500">Match</td>
+                  {comparedProposals.map(p => (
+                    <td key={p.id} className="p-3">
+                      {p.match_score !== undefined ? (
+                        <span className={`inline-flex rounded-full px-2 py-0.5 text-xs font-semibold ${p.match_score === Math.max(...comparedProposals.map(x => x.match_score ?? 0)) ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-100 text-slate-600'}`}>
+                          {p.match_score}%
+                        </span>
+                      ) : 'N/A'}
+                    </td>
+                  ))}
+                </tr>
+                <tr className="hover:bg-slate-50/50">
+                  <td className="p-3 font-medium text-slate-500">Skill match</td>
+                  {comparedProposals.map(p => (
+                    <td key={p.id} className="p-3">
+                      <span className={`inline-flex rounded-full px-2 py-0.5 text-xs font-semibold ${p.skill_match ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}`}>
+                        {p.skill_match ? 'Matched' : 'Unconfirmed'}
+                      </span>
+                    </td>
+                  ))}
+                </tr>
+                <tr className="hover:bg-slate-50/50">
+                  <td className="p-3 font-medium text-slate-500">Phone</td>
+                  {comparedProposals.map(p => (
+                    <td key={p.id} className="p-3 font-mono text-xs">{p.plumber.user.phone}</td>
+                  ))}
+                </tr>
+                <tr>
+                  <td className="p-3 font-medium text-slate-500">Action</td>
+                  {comparedProposals.map(p => (
+                    <td key={p.id} className="p-3">
+                      <button
+                        type="button"
+                        onClick={() => acceptProposal(p.id, p.booking.id)}
+                        disabled={loading}
+                        className="rounded bg-cyan-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-cyan-700 disabled:cursor-not-allowed disabled:bg-slate-400"
+                      >
+                        Accept
+                      </button>
+                    </td>
+                  ))}
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        )}
+
         {proposals.length === 0 ? (
           <p className="mt-4 text-sm text-slate-600">No active proposals at the moment.</p>
         ) : (
           <div className="mt-6 grid gap-4">
             {proposals.map((proposal) => (
-              <div key={proposal.id} className="rounded-xl bg-slate-50 p-6 shadow-sm">
+              <div key={proposal.id} className={`rounded-xl p-6 shadow-sm ${showCompare && selectedIds.has(proposal.id) ? 'ring-2 ring-cyan-500 bg-cyan-50' : 'bg-slate-50'}`}>
                 <div className="flex flex-col gap-3 sm:flex-row sm:justify-between sm:items-start">
-                  <div>
-                    <div className="flex flex-wrap items-center gap-2">
-                      <h3 className="text-lg font-semibold text-slate-900">{proposal.booking.service_type_name}</h3>
-                      {proposal.match_score !== undefined && (
-                        <span className="rounded-full bg-emerald-100 px-2 py-1 text-xs font-semibold text-emerald-800">
-                          Match {proposal.match_score}%
+                  <div className="flex items-start gap-3">
+                    {proposals.length > 1 && (
+                      <input
+                        type="checkbox"
+                        checked={selectedIds.has(proposal.id)}
+                        onChange={() => toggleCompare(proposal.id)}
+                        className="mt-1 h-4 w-4 rounded border-slate-300 text-cyan-600 focus:ring-cyan-500"
+                      />
+                    )}
+                    <div>
+                      <div className="flex flex-wrap items-center gap-2">
+                        <h3 className="text-lg font-semibold text-slate-900">{proposal.booking.service_type_name}</h3>
+                        {proposal.match_score !== undefined && (
+                          <span className="rounded-full bg-emerald-100 px-2 py-1 text-xs font-semibold text-emerald-800">
+                            Match {proposal.match_score}%
+                          </span>
+                        )}
+                      </div>
+                      <p className="mt-1 text-sm text-slate-600">Proposal from {proposal.plumber.user.name}</p>
+                      <p className="mt-2 text-sm text-slate-500">
+                        Location: {proposal.booking.landmark ?? 'N/A'}, {proposal.booking.tole_name ?? proposal.booking.ward_number}
+                      </p>
+                      <div className="mt-3 flex flex-wrap gap-2 text-xs text-slate-600">
+                        <span className="rounded-full bg-white px-2 py-1">
+                          Rating {proposal.plumber.rating?.toFixed(1) ?? 'N/A'}
                         </span>
-                      )}
-                    </div>
-                    <p className="mt-1 text-sm text-slate-600">Proposal from {proposal.plumber.user.name}</p>
-                    <p className="mt-2 text-sm text-slate-500">
-                      Location: {proposal.booking.landmark ?? 'N/A'}, {proposal.booking.tole_name ?? proposal.booking.ward_number}
-                    </p>
-                    <div className="mt-3 flex flex-wrap gap-2 text-xs text-slate-600">
-                      <span className="rounded-full bg-white px-2 py-1">
-                        Rating {proposal.plumber.rating?.toFixed(1) ?? 'N/A'}
-                      </span>
-                      <span className="rounded-full bg-white px-2 py-1">
-                        {proposal.distance_meters ? `${(proposal.distance_meters / 1000).toFixed(1)} km away` : 'Distance pending'}
-                      </span>
-                      <span className={`rounded-full px-2 py-1 ${proposal.skill_match ? 'bg-emerald-50 text-emerald-700' : 'bg-amber-50 text-amber-700'}`}>
-                        {proposal.skill_match ? 'Skill matched' : 'Skill not confirmed'}
-                      </span>
+                        <span className="rounded-full bg-white px-2 py-1">
+                          {proposal.distance_meters ? `${(proposal.distance_meters / 1000).toFixed(1)} km away` : 'Distance pending'}
+                        </span>
+                        <span className={`rounded-full px-2 py-1 ${proposal.skill_match ? 'bg-emerald-50 text-emerald-700' : 'bg-amber-50 text-amber-700'}`}>
+                          {proposal.skill_match ? 'Skill matched' : 'Skill not confirmed'}
+                        </span>
+                      </div>
                     </div>
                   </div>
                   <button

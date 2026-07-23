@@ -5,9 +5,9 @@ namespace Tests\Unit\Services\AI\Tools;
 use App\Models\PlumberProfile;
 use App\Models\Review;
 use App\Models\User;
-use App\Services\AI\Tools\CalculatePlumberScoreTool;
-use App\Services\AI\Tools\GetPlumberHistoryTool;
-use App\Services\AI\Tools\SearchNearbyPlumbersTool;
+use App\Services\Ai\Tools\CalculatePlumberScoreTool;
+use App\Services\Ai\Tools\GetPlumberHistoryTool;
+use App\Services\Ai\Tools\SearchNearbyPlumbersTool;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 

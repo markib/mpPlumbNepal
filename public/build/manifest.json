@@ -12,34 +12,22 @@
     "src": "node_modules/leaflet/dist/images/marker-icon.png"
   },
   "resources/css/app.css": {
-    "file": "assets/app-CD3vnC3E.css",
+    "file": "assets/app-D0TXJE_o.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/app.tsx": {
-    "file": "assets/app-CZFKtyw_.js",
+    "file": "assets/app-ohOKrdWK.js",
     "name": "app",
     "src": "resources/js/app.tsx",
     "isEntry": true,
-    "dynamicImports": [
-      "resources/js/bootstrap/reverb.ts"
-    ],
     "css": [
-      "assets/app-JyPE-q9F.css"
+      "assets/app-C0OxVyAn.css"
     ],
     "assets": [
       "assets/layers-BWBAp2CZ.png",
       "assets/layers-2x-Bpkbi35X.png",
       "assets/marker-icon-hN30_KVU.png"
-    ]
-  },
-  "resources/js/bootstrap/reverb.ts": {
-    "file": "assets/reverb-D4i6MIAa.js",
-    "name": "reverb",
-    "src": "resources/js/bootstrap/reverb.ts",
-    "isDynamicEntry": true,
-    "imports": [
-      "resources/js/app.tsx"
     ]
   }
 }

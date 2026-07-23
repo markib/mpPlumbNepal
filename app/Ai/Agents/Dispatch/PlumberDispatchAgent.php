@@ -2,9 +2,9 @@
 
 namespace App\Ai\Agents\Dispatch;
 
-use App\Services\AI\Tools\CalculatePlumberScoreTool;
-use App\Services\AI\Tools\GetPlumberHistoryTool;
-use App\Services\AI\Tools\SearchNearbyPlumbersTool;
+use App\Services\Ai\Tools\CalculatePlumberScoreTool;
+use App\Services\Ai\Tools\GetPlumberHistoryTool;
+use App\Services\Ai\Tools\SearchNearbyPlumbersTool;
 use Illuminate\Contracts\JsonSchema\JsonSchema;
 use Laravel\Ai\Contracts\Agent;
 use Laravel\Ai\Contracts\Conversational;
@@ -30,7 +30,7 @@ class PlumberDispatchAgent implements Agent, Conversational, HasStructuredOutput
     public function instructions(): Stringable|string
     {
         $contextInfo = $this->bookingContext
-            ? "Booking Details:\n- Location: {$this->bookingContext['latitude']}, {$this->bookingContext['longitude']}\n- Service Type ID: {$this->bookingContext['service_type_id']}\n- Emergency: ".($this->bookingContext['is_emergency'] ? 'Yes' : 'No')."\n- Min Rating: {$this->bookingContext['min_rating_required']}"
+            ? "Booking Details:\n- Location: {$this->bookingContext['latitude']}, {$this->bookingContext['longitude']}\n- Service Type ID: {$this->bookingContext['service_type_id']}\n- Emergency: " . ($this->bookingContext['is_emergency'] ? 'Yes' : 'No') . "\n- Min Rating: {$this->bookingContext['min_rating_required']}"
             : '';
 
         return <<<PROMPT
@@ -95,19 +95,21 @@ PROMPT;
     public function schema(JsonSchema $schema): array
     {
         return [
-            'recommendations' => $schema->array([
-                'plumber_id' => $schema->integer(),
-                'name' => $schema->string(),
-                'rating' => $schema->number()->min(0)->max(5),
-                'distance_km' => $schema->number(),
-                'match_score' => $schema->number()->min(0)->max(100),
-                'completed_jobs' => $schema->integer(),
-                'average_rating' => $schema->number()->min(0)->max(5),
-                'skills_matched' => $schema->array(),
-                'is_available' => $schema->boolean(),
-                'recommendation_reason' => $schema->string(),
-                'flags' => $schema->array(['emerging', 'new', 'verified', 'top_rated']),
-            ])->min(1)->max(10),
+            'recommendations' => $schema->array()->items(
+                $schema->object([
+                    'plumber_id' => $schema->integer(),
+                    'name' => $schema->string(),
+                    'rating' => $schema->number()->min(0)->max(5),
+                    'distance_km' => $schema->number(),
+                    'match_score' => $schema->number()->min(0)->max(100),
+                    'completed_jobs' => $schema->integer(),
+                    'average_rating' => $schema->number()->min(0)->max(5),
+                    'skills_matched' => $schema->array()->items($schema->string()),
+                    'is_available' => $schema->boolean(),
+                    'recommendation_reason' => $schema->string(),
+                    'flags' => $schema->array()->items($schema->string()->enum(['emerging', 'new', 'verified', 'top_rated'])),
+                ])
+            )->min(1)->max(10),
             'confidence' => $schema->number()->min(0)->max(1),
             'summary' => $schema->string(),
             'alternative_notes' => $schema->string(),

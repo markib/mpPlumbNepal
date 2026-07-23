@@ -3,6 +3,7 @@ import BookingPage from
   '../features/booking/pages/BookingPage';
 import PlumberDashboard from './PlumberDashboard';
 import CustomerProposalList from './CustomerProposalList';
+import AdminDashboard from './AdminDashboard';
 import type { AuthUser } from '../types';
 
 interface DashboardPageProps {
@@ -114,20 +115,22 @@ const DashboardPage: React.FC<DashboardPageProps> = ({ user, onLogout }) => {
           </div>
         </header>
 
-        <section className="rounded-xl bg-white p-6 shadow-sm">
-          <div className="mb-4 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-            <div>
-              <h2 className="text-xl font-semibold">Request Service</h2>
-              <p className="text-sm text-slate-600">
-                Use this form to create a new service booking from any role. Customers, plumbers, and partners can all request work from the dashboard.
-              </p>
+        {user.role !== 'admin' && (
+          <section className="rounded-xl bg-white p-6 shadow-sm">
+            <div className="mb-4 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+              <div>
+                <h2 className="text-xl font-semibold">Request Service</h2>
+                <p className="text-sm text-slate-600">
+                  Use this form to create a new service booking from any role. Customers, plumbers, and partners can all request work from the dashboard.
+                </p>
+              </div>
+              <span className="rounded-full bg-slate-100 px-3 py-1 text-sm text-slate-700">
+                Role: {user.role.replace('_', ' ')}
+              </span>
             </div>
-            <span className="rounded-full bg-slate-100 px-3 py-1 text-sm text-slate-700">
-              Role: {user.role.replace('_', ' ')}
-            </span>
-          </div>
-          <BookingPage />
-        </section>
+            <BookingPage />
+          </section>
+        )}
 
         {user.role === 'customer' && (
           <section className="rounded-xl bg-white p-6 shadow-sm">
@@ -163,9 +166,7 @@ const DashboardPage: React.FC<DashboardPageProps> = ({ user, onLogout }) => {
         {user.role === 'admin' && (
           <section className="rounded-xl bg-white p-6 shadow-sm">
             <h2 className="mb-4 text-xl font-semibold">Admin Dashboard</h2>
-            <p className="text-slate-600">
-              Manage users, review plumber verifications, and oversee booking operations.
-            </p>
+            <AdminDashboard />
           </section>
         )}
       </div>

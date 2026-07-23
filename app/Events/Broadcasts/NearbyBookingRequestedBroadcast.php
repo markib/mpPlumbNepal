@@ -28,7 +28,7 @@ class NearbyBookingRequestedBroadcast implements ShouldBroadcast
     public function broadcastOn(): array
     {
         return [
-            new PrivateChannel('plumbers.'.$this->plumber->id),
+            new PrivateChannel('plumbers.' . $this->plumber->id),
         ];
     }
 

@@ -22,7 +22,7 @@ class UserFactory extends Factory
         return [
             'name' => "Test User {$sequence}",
             'email' => "user{$sequence}@example.com",
-            'phone' => '98'.str_pad((string) $sequence, 8, '0', STR_PAD_LEFT),
+            'phone' => '98' . str_pad((string) $sequence, 8, '0', STR_PAD_LEFT),
             'password' => Hash::make('password'),
             'remember_token' => Str::random(10),
             'role' => 'customer',

@@ -21,7 +21,7 @@ class PlumberLocationUpdated implements ShouldBroadcast
     public function broadcastOn(): array
     {
         return [
-            new PrivateChannel('plumbers.'.$this->plumber->id.'.location'),
+            new PrivateChannel('plumbers.' . $this->plumber->id . '.location'),
         ];
     }
 

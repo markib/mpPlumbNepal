@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AdminController;
 use App\Http\Controllers\Api\AiController;
 use App\Http\Controllers\Api\AiPipelineController;
 use App\Http\Controllers\Api\AuthController;
@@ -226,6 +227,20 @@ Route::prefix('v1')->group(function () {
 
         /*
         |--------------------------------------------------------------------------
+        | ADMIN
+        |--------------------------------------------------------------------------
+        */
+
+        Route::prefix('admin')->middleware('auth:sanctum')->group(function () {
+            Route::get('users', [AdminController::class, 'users']);
+            Route::get('verifications', [AdminController::class, 'verifications']);
+            Route::post('verifications/{document}/approve', [AdminController::class, 'approveVerification']);
+            Route::post('verifications/{document}/reject', [AdminController::class, 'rejectVerification']);
+            Route::get('bookings', [AdminController::class, 'bookings']);
+        });
+
+        /*
+        |--------------------------------------------------------------------------
         | BROADCASTING AUTHENTICATION
         |--------------------------------------------------------------------------
         | Placing this inside the Sanctum group ensures that incoming Echo requests
@@ -249,4 +264,5 @@ Route::prefix('v1')->group(function () {
         Route::get('/pipeline/{pipelineId}', [AiPipelineController::class, 'show']);
     });
 
+    Route::fallback(fn () => response()->json(['message' => 'Route not found'], 404));
 });

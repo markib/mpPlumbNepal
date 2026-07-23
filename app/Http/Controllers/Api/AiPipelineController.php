@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\AiPipeline;
 use App\PipelineStatus;
-use App\Services\AI\AiPipelineService;
+use App\Services\Ai\AiPipelineService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 

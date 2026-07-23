@@ -6,7 +6,6 @@ use App\Events\PlumberLocationUpdate;
 use App\Http\Controllers\Controller;
 use App\Jobs\ProcessBookingAcceptance;
 use App\Models\Booking;
-use App\Models\PlumberProfile;
 use App\Services\BookingBroadcastService;
 use App\Services\GeoSearchService;
 use App\Services\PlumberDispatchService;
@@ -20,7 +19,7 @@ class DispatchController extends Controller
         // Delegate to the PlumberDispatchService which runs the agent-backed search
         $minRating = config('plumber_match.min_rating', 3.5);
 
-        $plumbers = app(\App\Services\PlumberDispatchService::class)
+        $plumbers = app(PlumberDispatchService::class)
             ->findNearbyPlumbersUsingAgent(
                 $latitude,
                 $longitude,

@@ -7,8 +7,8 @@ use App\Models\Booking;
 use App\Models\PlumberProfile;
 use App\Models\ServiceType;
 use App\Services\BookingBroadcastService;
-use App\Services\PricingCalculator;
 use App\Services\PlumberDispatchService;
+use App\Services\PricingCalculator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -86,7 +86,7 @@ class BookingController extends Controller
 
     public function show(Booking $booking)
     {
-        return response()->json($booking->load(['status', 'serviceType', 'plumber', 'user']));
+        return response()->json($booking->load(['status', 'serviceType', 'plumber.user', 'user']));
     }
 
     public function updateStatus(Request $request, Booking $booking)

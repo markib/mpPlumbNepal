@@ -36,9 +36,9 @@ class BookingAssigned implements ShouldBroadcast
     public function broadcastOn(): array
     {
         return [
-            new PrivateChannel('bookings.'.$this->booking->id),
-            new PrivateChannel('user.'.$this->booking->user_id),
-            new PrivateChannel('plumbers.'.$this->plumber->id),
+            new PrivateChannel('bookings.' . $this->booking->id),
+            new PrivateChannel('user.' . $this->booking->user_id),
+            new PrivateChannel('plumbers.' . $this->plumber->id),
         ];
     }
 

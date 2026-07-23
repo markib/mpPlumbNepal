@@ -18,6 +18,8 @@ class RecommendationAgentTest extends TestCase
     {
         $agent = new RecommendationAgent;
 
-        $this->assertIsIterable($agent->messages());
+        $response = $agent->messages();
+
+        $this->assertCount(3, $response);
     }
 }
