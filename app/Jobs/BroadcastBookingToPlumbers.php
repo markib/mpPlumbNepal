@@ -40,7 +40,7 @@ class BroadcastBookingToPlumbers implements ShouldQueue
 
         $matchingPlumbers = $matchingService->matchPlumbersForBooking($this->booking);
 
-        Log::info("Matching plumbers for booking {$this->booking->id}: ".$matchingPlumbers->count().' found');
+        Log::info("Matching plumbers for booking {$this->booking->id}: " . $matchingPlumbers->count() . ' found');
 
         if ($matchingPlumbers->isEmpty()) {
             Log::info("No matching plumbers found for booking {$this->booking->id}");
@@ -66,7 +66,7 @@ class BroadcastBookingToPlumbers implements ShouldQueue
 
     public function failed(\Throwable $exception): void
     {
-        Log::error("Failed to broadcast booking {$this->booking->id}: ".$exception->getMessage());
+        Log::error("Failed to broadcast booking {$this->booking->id}: " . $exception->getMessage());
 
         $this->booking->update([
             'broadcast_status' => 'failed',

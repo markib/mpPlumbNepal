@@ -19,7 +19,7 @@ abstract class TestCase extends BaseTestCase
 
     public function createApplication()
     {
-        $app = require __DIR__.'/../bootstrap/app.php';
+        $app = require __DIR__ . '/../bootstrap/app.php';
         $app->instance('request', Request::create('http://localhost/'));
         $app->make(Kernel::class)->bootstrap();
 

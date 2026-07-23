@@ -51,6 +51,6 @@ class ProcessBookingAcceptance implements ShouldQueue
         $broadcastService = app(BookingBroadcastService::class);
         $broadcastService->releaseAcceptLock($this->booking);
 
-        Log::error('Failed to process booking acceptance: '.$exception->getMessage());
+        Log::error('Failed to process booking acceptance: ' . $exception->getMessage());
     }
 }

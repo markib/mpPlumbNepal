@@ -171,7 +171,7 @@ class AgentRunner
     // ====================== Other Helper Methods ======================
     private function buildPrompt(string $message, bool $hasImage, ?array $image): string
     {
-        $prompt = 'USER DESCRIPTION: '.($message ?: 'No description provided.');
+        $prompt = 'USER DESCRIPTION: ' . ($message ?: 'No description provided.');
         if ($hasImage) {
             $prompt .= "\n\nIMAGE ATTACHED: Yes";
         }

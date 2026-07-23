@@ -9,6 +9,7 @@ use Laravel\Ai\Contracts\HasStructuredOutput;
 use Laravel\Ai\Contracts\HasTools;
 use Laravel\Ai\Contracts\Tool;
 use Laravel\Ai\Messages\Message;
+use Laravel\Ai\Messages\MessageRole;
 use Laravel\Ai\Promptable;
 use Stringable;
 
@@ -100,7 +101,11 @@ PROMPT;
      */
     public function messages(): iterable
     {
-        return [];
+        return [
+            new Message(MessageRole::User, 'A customer has submitted a plumbing diagnosis and needs actionable recommendations.'),
+            new Message(MessageRole::Assistant, 'I will analyze the diagnosis and generate practical, safety-focused recommendations suitable for a homeowner in Nepal.'),
+            new Message(MessageRole::User, 'Here is the structured diagnosis data. Please provide recommendations covering urgency, likely cause, DIY checks, tools needed, professional steps, safety precautions, and preventive maintenance.'),
+        ];
     }
 
     /**

@@ -31,7 +31,7 @@ class AiStorageService
                     'user_id' => auth()->id(), // Automatically link to the active user
                 ]);
             } catch (\Exception $e) {
-                Log::error('Failed to save AI Diagnosis: '.$e->getMessage());
+                Log::error('Failed to save AI Diagnosis: ' . $e->getMessage());
                 throw $e;
             }
         });

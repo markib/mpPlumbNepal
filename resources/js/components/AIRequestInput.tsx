@@ -143,7 +143,7 @@ export const AIRequestInput: React.FC<Props> = ({
         throw new Error(`Server Response Error (${response.status}): ${errorText}`);
       }
       const data = await response.json();
-console.log('Pipeline start response:', data);
+// console.log('Pipeline start response:', data);
       if (!response.ok) {
         throw new Error(data.message || 'Failed to start pipeline');
       }

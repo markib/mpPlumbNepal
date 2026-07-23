@@ -5,6 +5,12 @@ vendor/
 !.env.example
 /public/storage
 /storage/*.key
+/storage/phpstan/cache/
+/bootstrap/cache/*.php
+/storage/logs/
+/storage/phpstan/
+/storage/framework/cache/
+/public/hot
 .DS_Store
 npm-debug.log*
 yarn-debug.log*

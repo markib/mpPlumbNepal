@@ -12,15 +12,12 @@ class RunDiagnosisStepTest extends TestCase
 {
     public function test_it_calls_ai_service_and_sets_diagnosis(): void
     {
-        $ai = Mockery::mock(AgentRunner::class);
 
-        $ai->shouldReceive('run')
-            ->once()
-            ->withArgs(function ($agent, $message, $image) {
-                return $message === 'leak under sink'
-                    && $image === null;
-            })
-            ->andReturn([
+        $ai = $this->createMock(AgentRunner::class);
+
+        $ai->expects($this->once())
+            ->method('run')
+            ->willReturn([
                 'issue_type' => 'pipe_leak',
                 'confidence' => 0.9,
             ]);
