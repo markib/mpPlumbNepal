@@ -7,7 +7,7 @@ namespace App\Http\Controllers\Api;
 use App\Ai\Agents\Diagnosis\DiagnosisValidator;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DiagnoseRequest;
-use App\Services\AI\AiPipelineService;
+use App\Services\Ai\AiPipelineService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
 

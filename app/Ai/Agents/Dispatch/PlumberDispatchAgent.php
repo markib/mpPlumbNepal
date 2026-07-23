@@ -2,9 +2,9 @@
 
 namespace App\Ai\Agents\Dispatch;
 
-use App\Services\AI\Tools\CalculatePlumberScoreTool;
-use App\Services\AI\Tools\GetPlumberHistoryTool;
-use App\Services\AI\Tools\SearchNearbyPlumbersTool;
+use App\Services\Ai\Tools\CalculatePlumberScoreTool;
+use App\Services\Ai\Tools\GetPlumberHistoryTool;
+use App\Services\Ai\Tools\SearchNearbyPlumbersTool;
 use Illuminate\Contracts\JsonSchema\JsonSchema;
 use Laravel\Ai\Contracts\Agent;
 use Laravel\Ai\Contracts\Conversational;

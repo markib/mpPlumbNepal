@@ -5,7 +5,7 @@ namespace App\Ai\Steps;
 use App\Ai\Agents\Dispatch\PlumberDispatchAgent;
 use App\Ai\Context\PipelineContext;
 use App\Ai\Contracts\PipelineStep;
-use App\Services\AI\AgentRunner;
+use App\Services\Ai\AgentRunner;
 use Illuminate\Support\Facades\Log;
 
 class RunDispatchAgentStep implements PipelineStep

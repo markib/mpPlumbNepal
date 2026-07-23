@@ -352,3 +352,175 @@
 [2026-07-23 03:49:30] testing.ERROR: Dispatch Pipeline Failed {"error":"Received Mockery_6_App_Ai_Workflows_DispatchWorkflow::steps(), but no expectations were specified"} 
 [2026-07-23 03:49:30] testing.ERROR: Dispatch Pipeline Failed {"error":"Pipeline error"} 
 [2026-07-23 03:49:30] testing.ERROR: Dispatch Pipeline Failed {"error":"Received Mockery_6_App_Ai_Workflows_DispatchWorkflow::steps(), but no expectations were specified"} 
+[2026-07-23 16:01:19] testing.ERROR: AI Pipeline failed {"pipeline_id":1,"error":"Service unreachable"} 
+[2026-07-23 16:01:20] testing.INFO: Matching plumbers for booking 6: 0 found  
+[2026-07-23 16:01:20] testing.INFO: No matching plumbers found for booking 6  
+[2026-07-23 16:01:20] testing.INFO: Booking details - lat: 27.7172, lng: 85.324, service_type_id: 6  
+[2026-07-23 16:01:26] testing.WARNING: AI Agent Failed {"agent":"PlumberDispatchAgent","provider":"gemini","model":"gemini-2.5-flash","error":"HTTP request returned status code 403:
+{
+  \"error\": {
+    \"code\": 403,
+    \"message\": \"Method doesn't allow unregistered callers (callers without established i (truncated...)
+"} 
+[2026-07-23 16:02:25] testing.INFO: AI Agent Success {"agent":"PlumberDispatchAgent","provider":"ollama","model":"qwen2.5-coder:1.5b"} 
+[2026-07-23 16:02:25] testing.INFO: Dispatch Agent Step Output {"recommendations_count":5,"confidence":0.95} 
+[2026-07-23 16:02:26] testing.INFO: StepCompletedEvent fired {"pipelineId":0,"stepName":"RunDispatchAgentStep"} 
+[2026-07-23 16:02:26] testing.INFO: broadcastOn executed {"pipelineId":0} 
+[2026-07-23 16:02:28] testing.ERROR: Dispatch Pipeline Failed {"error":"Pusher error: cURL error 7: Failed to connect to 127.0.0.1 port 8080 after 2030 ms: Could not connect to server (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for http://127.0.0.1:8080/apps/test/events?auth_key=test&auth_timestamp=1784822546&auth_version=1.0&body_md5=6dce61b6edbfc2faaa593fd50492bec1&auth_signature=4587d492b641bd5769e0de583a4743fed3b9887ff35a49cee327f801d8f37a17."} 
+[2026-07-23 16:02:28] testing.WARNING: Dispatch agent returned no plumbers, falling back to geo search {"latitude":27.7172,"longitude":85.324,"radius_km":5.0,"service_type_id":6} 
+[2026-07-23 16:02:28] testing.INFO: AI Pipeline started {"pipeline_id":2,"user_id":13} 
+[2026-07-23 16:02:29] testing.INFO: Diagnosis Step Output {"diagnosis":{"issue_type":"pipe_leak","confidence":0.9,"urgency":"medium","summary":"Mocked AI response"}} 
+[2026-07-23 16:02:29] testing.INFO: StepCompletedEvent fired {"pipelineId":3,"stepName":"RunDiagnosisStep"} 
+[2026-07-23 16:02:29] testing.INFO: StepCompletedEvent fired {"pipelineId":3,"stepName":"ValidateDiagnosisStep"} 
+[2026-07-23 16:02:29] testing.INFO: Recommendation Step Output {"recommendation":{"issue_type":"pipe_leak","confidence":0.9,"urgency":"medium","summary":"Mocked AI response"}} 
+[2026-07-23 16:02:29] testing.INFO: StepCompletedEvent fired {"pipelineId":3,"stepName":"GenerateRecommendationStep"} 
+[2026-07-23 16:02:29] testing.INFO: AI StoreResultStep completed - Diagnosis workflow {"result":{"issue_type":"pipe_leak","urgency":"medium","estimated_price_min":1500,"estimated_price_max":5000,"confidence":0.9,"summary":"Mocked AI response","recommended_service":"Leak Repair"}} 
+[2026-07-23 16:02:29] testing.INFO: StepCompletedEvent fired {"pipelineId":3,"stepName":"StoreResultStep"} 
+[2026-07-23 16:02:29] testing.INFO: Matching plumbers for booking 7: 0 found  
+[2026-07-23 16:02:29] testing.INFO: No matching plumbers found for booking 7  
+[2026-07-23 16:02:29] testing.INFO: Booking details - lat: 27.7172, lng: 85.324, service_type_id: 8  
+[2026-07-23 16:02:29] testing.WARNING: AI Agent Failed {"agent":"PlumberDispatchAgent","provider":"gemini","model":"gemini-2.5-flash","error":"HTTP request returned status code 403:
+{
+  \"error\": {
+    \"code\": 403,
+    \"message\": \"Method doesn't allow unregistered callers (callers without established i (truncated...)
+"} 
+[2026-07-23 16:03:16] testing.INFO: AI Agent Success {"agent":"PlumberDispatchAgent","provider":"ollama","model":"qwen2.5-coder:1.5b"} 
+[2026-07-23 16:03:16] testing.INFO: Dispatch Agent Step Output {"recommendations_count":5,"confidence":0.9} 
+[2026-07-23 16:03:16] testing.INFO: StepCompletedEvent fired {"pipelineId":0,"stepName":"RunDispatchAgentStep"} 
+[2026-07-23 16:03:16] testing.INFO: broadcastOn executed {"pipelineId":0} 
+[2026-07-23 16:03:18] testing.ERROR: Dispatch Pipeline Failed {"error":"Pusher error: cURL error 7: Failed to connect to 127.0.0.1 port 8080 after 2035 ms: Could not connect to server (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for http://127.0.0.1:8080/apps/test/events?auth_key=test&auth_timestamp=1784822596&auth_version=1.0&body_md5=6dce61b6edbfc2faaa593fd50492bec1&auth_signature=389650f753f4251850cf0d03665ec2a371c533ab7df4a40b4e5981e6cefe1b0d."} 
+[2026-07-23 16:03:18] testing.WARNING: Dispatch agent returned no plumbers, falling back to geo search {"latitude":27.7172,"longitude":85.324,"radius_km":5.0,"service_type_id":8} 
+[2026-07-23 16:03:18] testing.INFO: Broadcasting auth request {"user_id":17,"role":"plumber","channel_name":"private-plumbers.3","socket_id":"1234.5678"} 
+[2026-07-23 16:03:19] testing.INFO: CHANNEL AUTH {"user_id":17,"role":"plumber","relationship_profile_id":3,"requested_channel":"3"} 
+[2026-07-23 16:03:19] testing.INFO: Broadcasting auth request {"user_id":18,"role":"plumber","channel_name":"private-plumbers.4","socket_id":"1234.5678"} 
+[2026-07-23 16:03:19] testing.INFO: CHANNEL AUTH {"user_id":18,"role":"plumber","relationship_profile_id":4,"requested_channel":"4"} 
+[2026-07-23 16:03:19] testing.INFO: Broadcasting auth request {"user_id":19,"role":"customer","channel_name":"private-user.19","socket_id":"1234.5678"} 
+[2026-07-23 16:03:19] testing.WARNING: AI Agent Failed {"agent":"PlumberDispatchAgent","provider":"gemini","model":"gemini-2.5-flash","error":"HTTP request returned status code 403:
+{
+  \"error\": {
+    \"code\": 403,
+    \"message\": \"Method doesn't allow unregistered callers (callers without established i (truncated...)
+"} 
+[2026-07-23 16:04:04] testing.INFO: AI Agent Success {"agent":"PlumberDispatchAgent","provider":"ollama","model":"qwen2.5-coder:1.5b"} 
+[2026-07-23 16:04:04] testing.INFO: Dispatch Agent Step Output {"recommendations_count":5,"confidence":0.95} 
+[2026-07-23 16:04:04] testing.INFO: StepCompletedEvent fired {"pipelineId":0,"stepName":"RunDispatchAgentStep"} 
+[2026-07-23 16:04:04] testing.INFO: broadcastOn executed {"pipelineId":0} 
+[2026-07-23 16:04:06] testing.ERROR: Dispatch Pipeline Failed {"error":"Pusher error: cURL error 7: Failed to connect to 127.0.0.1 port 8080 after 2027 ms: Could not connect to server (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for http://127.0.0.1:8080/apps/test/events?auth_key=test&auth_timestamp=1784822644&auth_version=1.0&body_md5=6dce61b6edbfc2faaa593fd50492bec1&auth_signature=4d8163b8d4f81939abbaf12cf4601ece1069f39466a567276b2d4ee453ee301b."} 
+[2026-07-23 16:04:07] testing.WARNING: AI Agent Failed {"agent":"PlumberDispatchAgent","provider":"gemini","model":"gemini-2.5-flash","error":"HTTP request returned status code 403:
+{
+  \"error\": {
+    \"code\": 403,
+    \"message\": \"Method doesn't allow unregistered callers (callers without established i (truncated...)
+"} 
+[2026-07-23 16:04:55] testing.INFO: AI Agent Success {"agent":"PlumberDispatchAgent","provider":"ollama","model":"qwen2.5-coder:1.5b"} 
+[2026-07-23 16:04:55] testing.INFO: Dispatch Agent Step Output {"recommendations_count":5,"confidence":0.95} 
+[2026-07-23 16:04:55] testing.INFO: StepCompletedEvent fired {"pipelineId":0,"stepName":"RunDispatchAgentStep"} 
+[2026-07-23 16:04:55] testing.INFO: broadcastOn executed {"pipelineId":0} 
+[2026-07-23 16:04:57] testing.ERROR: Dispatch Pipeline Failed {"error":"Pusher error: cURL error 7: Failed to connect to 127.0.0.1 port 8080 after 2017 ms: Could not connect to server (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for http://127.0.0.1:8080/apps/test/events?auth_key=test&auth_timestamp=1784822695&auth_version=1.0&body_md5=6dce61b6edbfc2faaa593fd50492bec1&auth_signature=9f6822b0e67edae9a00c2832dd0381059e32a0e18d09389a039ec0c21380b107."} 
+[2026-07-23 16:04:57] testing.WARNING: AI Agent Failed {"agent":"PlumberDispatchAgent","provider":"gemini","model":"gemini-2.5-flash","error":"HTTP request returned status code 403:
+{
+  \"error\": {
+    \"code\": 403,
+    \"message\": \"Method doesn't allow unregistered callers (callers without established i (truncated...)
+"} 
+[2026-07-23 16:05:57] testing.INFO: AI Agent Success {"agent":"PlumberDispatchAgent","provider":"ollama","model":"qwen2.5-coder:1.5b"} 
+[2026-07-23 16:05:57] testing.INFO: Dispatch Agent Step Output {"recommendations_count":5,"confidence":1.0} 
+[2026-07-23 16:05:57] testing.INFO: StepCompletedEvent fired {"pipelineId":0,"stepName":"RunDispatchAgentStep"} 
+[2026-07-23 16:05:57] testing.INFO: broadcastOn executed {"pipelineId":0} 
+[2026-07-23 16:05:59] testing.ERROR: Dispatch Pipeline Failed {"error":"Pusher error: cURL error 7: Failed to connect to 127.0.0.1 port 8080 after 2031 ms: Could not connect to server (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for http://127.0.0.1:8080/apps/test/events?auth_key=test&auth_timestamp=1784822757&auth_version=1.0&body_md5=6dce61b6edbfc2faaa593fd50492bec1&auth_signature=ac04081bfc5da34fd1372e66869d94ee5f3ce7d71b25ad39ee92c092756b5f06."} 
+[2026-07-23 16:06:01] testing.INFO: Diagnosis Step Output {"diagnosis":{"issue_type":"pipe_leak","confidence":0.9}} 
+[2026-07-23 16:06:03] testing.INFO: Dispatch Pipeline Completed {"recommendations_count":0,"confidence":0.8} 
+[2026-07-23 16:06:04] testing.ERROR: Dispatch Pipeline Failed {"error":"Received Mockery_6_App_Ai_Workflows_DispatchWorkflow::steps(), but no expectations were specified"} 
+[2026-07-23 16:06:04] testing.ERROR: Dispatch Pipeline Failed {"error":"Pipeline error"} 
+[2026-07-23 16:06:04] testing.ERROR: Dispatch Pipeline Failed {"error":"Received Mockery_6_App_Ai_Workflows_DispatchWorkflow::steps(), but no expectations were specified"} 
+[2026-07-23 16:42:40] testing.INFO: Diagnosis Step Output {"diagnosis":{"issue_type":"pipe_leak","confidence":0.9}} 
+[2026-07-23 16:54:02] testing.INFO: Diagnosis Step Output {"diagnosis":{"issue_type":"pipe_leak","confidence":0.9}} 
+[2026-07-23 16:54:11] testing.ERROR: AI Pipeline failed {"pipeline_id":1,"error":"Service unreachable"} 
+[2026-07-23 16:54:11] testing.INFO: Matching plumbers for booking 6: 0 found  
+[2026-07-23 16:54:11] testing.INFO: No matching plumbers found for booking 6  
+[2026-07-23 16:54:11] testing.INFO: Booking details - lat: 27.7172, lng: 85.324, service_type_id: 6  
+[2026-07-23 16:54:12] testing.WARNING: AI Agent Failed {"agent":"PlumberDispatchAgent","provider":"gemini","model":"gemini-2.5-flash","error":"HTTP request returned status code 403:
+{
+  \"error\": {
+    \"code\": 403,
+    \"message\": \"Method doesn't allow unregistered callers (callers without established i (truncated...)
+"} 
+[2026-07-23 16:55:41] testing.INFO: AI Agent Success {"agent":"PlumberDispatchAgent","provider":"ollama","model":"qwen2.5-coder:1.5b"} 
+[2026-07-23 16:55:41] testing.INFO: Dispatch Agent Step Output {"recommendations_count":5,"confidence":0.98} 
+[2026-07-23 16:55:41] testing.INFO: StepCompletedEvent fired {"pipelineId":0,"stepName":"RunDispatchAgentStep"} 
+[2026-07-23 16:55:41] testing.INFO: broadcastOn executed {"pipelineId":0} 
+[2026-07-23 16:55:43] testing.ERROR: Dispatch Pipeline Failed {"error":"Pusher error: cURL error 7: Failed to connect to 127.0.0.1 port 8080 after 2033 ms: Could not connect to server (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for http://127.0.0.1:8080/apps/test/events?auth_key=test&auth_timestamp=1784825741&auth_version=1.0&body_md5=6dce61b6edbfc2faaa593fd50492bec1&auth_signature=042cca3003a632ea83a5578a507c7554070cdca9a8f26e14716c7037cda6459f."} 
+[2026-07-23 16:55:43] testing.WARNING: Dispatch agent returned no plumbers, falling back to geo search {"latitude":27.7172,"longitude":85.324,"radius_km":5.0,"service_type_id":6} 
+[2026-07-23 16:55:43] testing.INFO: AI Pipeline started {"pipeline_id":2,"user_id":13} 
+[2026-07-23 16:55:44] testing.INFO: Diagnosis Step Output {"diagnosis":{"issue_type":"pipe_leak","confidence":0.9,"urgency":"medium","summary":"Mocked AI response"}} 
+[2026-07-23 16:55:44] testing.INFO: StepCompletedEvent fired {"pipelineId":3,"stepName":"RunDiagnosisStep"} 
+[2026-07-23 16:55:44] testing.INFO: StepCompletedEvent fired {"pipelineId":3,"stepName":"ValidateDiagnosisStep"} 
+[2026-07-23 16:55:44] testing.INFO: Recommendation Step Output {"recommendation":{"issue_type":"pipe_leak","confidence":0.9,"urgency":"medium","summary":"Mocked AI response"}} 
+[2026-07-23 16:55:44] testing.INFO: StepCompletedEvent fired {"pipelineId":3,"stepName":"GenerateRecommendationStep"} 
+[2026-07-23 16:55:44] testing.INFO: AI StoreResultStep completed - Diagnosis workflow {"result":{"issue_type":"pipe_leak","urgency":"medium","estimated_price_min":1500,"estimated_price_max":5000,"confidence":0.9,"summary":"Mocked AI response","recommended_service":"Leak Repair"}} 
+[2026-07-23 16:55:44] testing.INFO: StepCompletedEvent fired {"pipelineId":3,"stepName":"StoreResultStep"} 
+[2026-07-23 16:55:44] testing.INFO: Matching plumbers for booking 7: 0 found  
+[2026-07-23 16:55:44] testing.INFO: No matching plumbers found for booking 7  
+[2026-07-23 16:55:44] testing.INFO: Booking details - lat: 27.7172, lng: 85.324, service_type_id: 8  
+[2026-07-23 16:55:44] testing.WARNING: AI Agent Failed {"agent":"PlumberDispatchAgent","provider":"gemini","model":"gemini-2.5-flash","error":"HTTP request returned status code 403:
+{
+  \"error\": {
+    \"code\": 403,
+    \"message\": \"Method doesn't allow unregistered callers (callers without established i (truncated...)
+"} 
+[2026-07-23 16:56:24] testing.ERROR: AI Pipeline failed {"pipeline_id":1,"error":"Service unreachable"} 
+[2026-07-23 16:56:24] testing.INFO: Matching plumbers for booking 1: 0 found  
+[2026-07-23 16:56:24] testing.INFO: No matching plumbers found for booking 1  
+[2026-07-23 16:56:24] testing.INFO: Booking details - lat: 27.7172, lng: 85.324, service_type_id: 1  
+[2026-07-23 16:56:25] testing.WARNING: AI Agent Failed {"agent":"PlumberDispatchAgent","provider":"gemini","model":"gemini-2.5-flash","error":"HTTP request returned status code 403:
+{
+  \"error\": {
+    \"code\": 403,
+    \"message\": \"Method doesn't allow unregistered callers (callers without established i (truncated...)
+"} 
+[2026-07-23 16:57:15] testing.INFO: AI Agent Success {"agent":"PlumberDispatchAgent","provider":"ollama","model":"qwen2.5-coder:1.5b"} 
+[2026-07-23 16:57:15] testing.INFO: Dispatch Agent Step Output {"recommendations_count":5,"confidence":0.9} 
+[2026-07-23 16:57:15] testing.INFO: StepCompletedEvent fired {"pipelineId":0,"stepName":"RunDispatchAgentStep"} 
+[2026-07-23 16:57:15] testing.INFO: broadcastOn executed {"pipelineId":0} 
+[2026-07-23 16:57:17] testing.ERROR: Dispatch Pipeline Failed {"error":"Pusher error: cURL error 7: Failed to connect to 127.0.0.1 port 8080 after 2031 ms: Could not connect to server (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for http://127.0.0.1:8080/apps/test/events?auth_key=test&auth_timestamp=1784825835&auth_version=1.0&body_md5=6dce61b6edbfc2faaa593fd50492bec1&auth_signature=af8ea788a14ccf2b93cd866d4c77c53b78cc90d8d2348660b6e0cad75fad5e4d."} 
+[2026-07-23 16:57:17] testing.WARNING: Dispatch agent returned no plumbers, falling back to geo search {"latitude":27.7172,"longitude":85.324,"radius_km":5.0,"service_type_id":1} 
+[2026-07-23 16:57:17] testing.INFO: AI Pipeline started {"pipeline_id":1,"user_id":1} 
+[2026-07-23 16:57:17] testing.INFO: Diagnosis Step Output {"diagnosis":{"issue_type":"pipe_leak","confidence":0.9,"urgency":"medium","summary":"Mocked AI response"}} 
+[2026-07-23 16:57:17] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"RunDiagnosisStep"} 
+[2026-07-23 16:57:17] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"ValidateDiagnosisStep"} 
+[2026-07-23 16:57:17] testing.INFO: Recommendation Step Output {"recommendation":{"issue_type":"pipe_leak","confidence":0.9,"urgency":"medium","summary":"Mocked AI response"}} 
+[2026-07-23 16:57:17] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"GenerateRecommendationStep"} 
+[2026-07-23 16:57:17] testing.INFO: AI StoreResultStep completed - Diagnosis workflow {"result":{"issue_type":"pipe_leak","urgency":"medium","estimated_price_min":1500,"estimated_price_max":5000,"confidence":0.9,"summary":"Mocked AI response","recommended_service":"Leak Repair"}} 
+[2026-07-23 16:57:17] testing.INFO: StepCompletedEvent fired {"pipelineId":1,"stepName":"StoreResultStep"} 
+[2026-07-23 16:57:17] testing.INFO: Matching plumbers for booking 1: 0 found  
+[2026-07-23 16:57:17] testing.INFO: No matching plumbers found for booking 1  
+[2026-07-23 16:57:17] testing.INFO: Booking details - lat: 27.7172, lng: 85.324, service_type_id: 1  
+[2026-07-23 16:57:18] testing.WARNING: AI Agent Failed {"agent":"PlumberDispatchAgent","provider":"gemini","model":"gemini-2.5-flash","error":"HTTP request returned status code 403:
+{
+  \"error\": {
+    \"code\": 403,
+    \"message\": \"Method doesn't allow unregistered callers (callers without established i (truncated...)
+"} 
+[2026-07-23 16:58:16] testing.INFO: AI Agent Success {"agent":"PlumberDispatchAgent","provider":"ollama","model":"qwen2.5-coder:1.5b"} 
+[2026-07-23 16:58:16] testing.INFO: Dispatch Agent Step Output {"recommendations_count":5,"confidence":0.95} 
+[2026-07-23 16:58:16] testing.INFO: StepCompletedEvent fired {"pipelineId":0,"stepName":"RunDispatchAgentStep"} 
+[2026-07-23 16:58:16] testing.INFO: broadcastOn executed {"pipelineId":0} 
+[2026-07-23 16:58:18] testing.ERROR: Dispatch Pipeline Failed {"error":"Pusher error: cURL error 7: Failed to connect to 127.0.0.1 port 8080 after 2040 ms: Could not connect to server (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) for http://127.0.0.1:8080/apps/test/events?auth_key=test&auth_timestamp=1784825896&auth_version=1.0&body_md5=6dce61b6edbfc2faaa593fd50492bec1&auth_signature=79bdfb54b03a13902493a479bc5f30527a4e34f1ef8a5a39ef62a99d850c4b19."} 
+[2026-07-23 16:58:18] testing.WARNING: Dispatch agent returned no plumbers, falling back to geo search {"latitude":27.7172,"longitude":85.324,"radius_km":5.0,"service_type_id":1} 
+[2026-07-23 16:58:18] testing.INFO: Broadcasting auth request {"user_id":1,"role":"plumber","channel_name":"private-plumbers.1","socket_id":"1234.5678"} 
+[2026-07-23 16:58:18] testing.INFO: CHANNEL AUTH {"user_id":1,"role":"plumber","relationship_profile_id":1,"requested_channel":"1"} 
+[2026-07-23 16:58:18] testing.INFO: Broadcasting auth request {"user_id":1,"role":"plumber","channel_name":"private-plumbers.1","socket_id":"1234.5678"} 
+[2026-07-23 16:58:18] testing.INFO: CHANNEL AUTH {"user_id":1,"role":"plumber","relationship_profile_id":1,"requested_channel":"1"} 
+[2026-07-23 16:58:18] testing.INFO: Broadcasting auth request {"user_id":1,"role":"customer","channel_name":"private-user.1","socket_id":"1234.5678"} 
+[2026-07-23 16:58:19] testing.WARNING: AI Agent Failed {"agent":"PlumberDispatchAgent","provider":"gemini","model":"gemini-2.5-flash","error":"HTTP request returned status code 403:
+{
+  \"error\": {
+    \"code\": 403,
+    \"message\": \"Method doesn't allow unregistered callers (callers without established i (truncated...)
+"} 
+[2026-07-23 16:58:26] testing.INFO: Diagnosis Step Output {"diagnosis":{"issue_type":"pipe_leak","confidence":0.9}} 
+[2026-07-23 16:58:27] testing.INFO: Dispatch Pipeline Completed {"recommendations_count":0,"confidence":0.8} 
+[2026-07-23 16:58:27] testing.ERROR: Dispatch Pipeline Failed {"error":"Received Mockery_5_App_Ai_Workflows_DispatchWorkflow::steps(), but no expectations were specified"} 
+[2026-07-23 16:58:27] testing.ERROR: Dispatch Pipeline Failed {"error":"Pipeline error"} 
+[2026-07-23 16:58:27] testing.ERROR: Dispatch Pipeline Failed {"error":"Received Mockery_5_App_Ai_Workflows_DispatchWorkflow::steps(), but no expectations were specified"} 

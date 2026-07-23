@@ -3,7 +3,7 @@
 namespace Tests\Unit;
 
 use App\Models\User;
-use App\Services\AI\AiStorageService;
+use App\Services\Ai\AiStorageService;
 use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 
